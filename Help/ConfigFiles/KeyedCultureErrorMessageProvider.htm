@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>KeyedCultureErrorMessageProvider</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+ <span class="topicTitle">XML Configuration for KeyedCultureErrorMessageProvider</span>
+  <br />
+  <br />
+  
+  <div class="sectionTitle">Elements</div>
+  <br />
+  <br />
+  <ul>
+    <li>
+      <b><span class="code">keyedCultureErrorMessageProvider</span> Element</b>
+      <br />
+      Contains information about how to create a <see cref="ValidationFramework.Configuration.KeyedCultureErrorMessageProvider">KeyedCultureErrorMessageProvider</see>.
+      <pre lang="xml"><keyedCultureErrorMessageProvider/>
+      </pre>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">message</span> (at least 1 required) : one <span class="code">message</span> element should exists for each keyed error message.
+        </li>
+      </ul>
+      <br/>
+    </li>
+    <li>
+      <b><span class="code">message</span> Element</b>
+      <br />
+      Contains information about an xml mapping file.
+      <pre lang="xml"><message 
+               key="ErrorMessageKey" 
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">key</span> (required): The error message key.
+        </li>
+      </ul>
+    <br/>
+    </li>
+    <li>
+      <b><span class="code">culture</span> Element</b>
+      <br />
+      Contains information about an culture.
+      <pre lang="xml"><culture 
+               cultureId="en-AU" 
+        />
+      </pre>
+      <b>Inner XML</b>
+      <ul>
+        <li>
+          (required) : Used to populate the xml.
+        </li>
+      </ul>
+      <br/>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">cultureId</span> (required): The culture id.
+        </li>
+      </ul>
+    <br/>
+    </li>
+  </ul>
+</body>
+</html>
+<!-- @SortOrder 1 -->

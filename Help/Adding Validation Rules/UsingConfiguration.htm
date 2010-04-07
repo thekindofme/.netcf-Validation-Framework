@@ -1,0 +1,654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Adding Validation Rules Using Configuration</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+  <span class="topicTitle">Adding Validation Rules Using Configuration </span>
+  <br />
+  <br />
+  Validation definitions can be defined using XML configuration. The mapping document is designed
+  to be readable and hand-editable.
+  <br />
+  Let's kick off with an example mapping:
+  
+  
+<code lang="xml" source="Examples\ExampleLibraryCSharp\Configuration\Person.validation.xml" title="Example mapping for CSharp." />
+<code lang="cs" source="Examples\ExampleLibraryCSharp\Configuration\ConfigurationServiceExample.cs" title="Using configurationService with CSharp." />
+  
+<code lang="xml" source="Examples\ExampleLibraryVB\Configuration\Person.validation.xml" title="Example mapping for VB." />
+<code lang="cs" source="Examples\ExampleLibraryVB\Configuration\ConfigurationServiceExample.vb" title="Using configurationService with VB." />
+  
+  
+  
+  <div class="sectionTitle">XML Namespace</div>
+  <br />
+  All XML mappings should declare the XML namespace shown. The schema is shipped with the deployed zip or 
+  may be found in the ValidationFramework\validation-definition.xsd file in the solution folder.<br />
+  <br />
+  <em>
+  Tip: to enable IntelliSense in VS.Net for mapping and configuration files copy the validation-definition.xsd
+  to &lt;VS.NET installation directory&gt;\Common7\Packages\schemas\xml.&nbsp;</em>
+  <br />
+  <br />
+  <div class="sectionTitle">Elements</div>
+  <br />
+  <br />
+  <ul>
+    <li>
+      <b><span class="code">validationMapping</span> Element</b>
+      <br />
+      The root element of any xml validation configuration.
+      <pre lang="xml"><validationMapping/>
+      </pre>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">class</span> (at least 1 required) : one <span class="code">class</span> element should exists for each type that required validation.
+        </li>
+      </ul>
+      <br/>
+    </li>
+    <li>
+      <b><span class="code">class</span> Element</b>
+      <br />
+      The xml definition of how to validate a class.
+      <pre lang="xml"><class 
+               typeName="TypeName" 
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">typeName</span> (required): The fully qualified .NET class name of the class to validate, including its assembly name. 
+        </li>
+      </ul>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">property</span> (optional) : one <span class="code">property</span> element should exists for each property that required validation.
+        </li>
+        <li>
+          <span class="code">method</span>  (optional) : one <span class="code">method</span> element should exists for each method that required validation.
+        </li>
+      </ul>
+    <br/>
+    </li>
+    <li>
+      <b><span class="code">property</span> Element</b>
+      <br />
+      The xml definition of how to validate a property.
+      <pre lang="xml"><property 
+               name="PropertyName"  
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">name</span> (required): the name of the property of your class. 
+        </li>
+      </ul>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+         <span class="code">validator</span> (at lease one required) : one <span class="code">rule</span> element should exists for each <see cref="Rule"/> that is being applied to the property.
+        </li>
+      </ul>
+    <br/>
+    </li>
+    <li>
+      <b><span class="code">method</span> Element</b>
+      <br />
+      The xml definition of how to validate a method.
+      <pre lang="xml"><method 
+               name="MethodName"  
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">name</span> (required): the name of the method of your class. 
+        </li>
+      </ul>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">parameter</span> (at lease one required) : <span class="code">parameter</span> elements should only exists for each parameter that <see cref="Rule"/> are being applied to.
+        </li>
+        <li>
+          <span class="code">overloadType</span> (option) : if there are multiple method with the same name <span class="code">overloadType</span> elements can be used to uniquely identify the methods.
+        </li>
+      </ul>
+    <br/>
+    </li>
+    <li>
+      <b><span class="code">parameter</span> Element</b> 
+      <br />
+      The xml definition of how to validate a parameter.
+      <pre lang="xml"><parameter 
+               name="ParameterName" 
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">name</span> (required): the name of the parameter of the method. 
+        </li>
+      </ul>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">validator</span> (at lease one required) : one <span class="code">rule</span> element should exists for each <see cref="Rule"/> that is being applied to the parameter.
+        </li>
+      </ul>
+      <br/>
+    </li>
+    <li>
+      <b><span class="code">overloadType</span> Element</b>
+      <br />
+      A helper element used to uniquely identify a method.
+      <pre lang="xml"><overloadType 
+               typeName="TypeName" 
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">typeName</span> (required): the name of the method of your class. 
+        </li>
+      </ul>
+      <br/>
+    </li>
+    <li>
+      <b><span class="code">validator</span> Element</b>
+      <br />
+      The xml definition of what <see cref="Rule"/> to create.
+      <pre lang="xml"><rule 
+               typeName="TypeName"   
+               errorMessage="ErrorMessage"   
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">typeName</span> (required): The fully qualified .NET class name of the <see cref="ValidationFramework.Configuration.IRuleConfigReader">IRuleConfigReader</see> used to generate the <see cref="ValidationFramework.IRule">IRule</see>, including its assembly name.  
+        </li>
+        <li>
+          <span class="code">errorMessage</span> (optional): the error message. 
+        </li>
+        <li>
+          <span class="code">ruleSet</span> (optional): the rule set. 
+        </li>
+        <li>
+          ANY ATTRIBUTE (optional): extra attributes can be defined which are then passed to the <see cref="ValidationFramework.Configuration.IRuleConfigReader">IRuleConfigReader</see> for generate the <see cref="ValidationFramework.IRule">IRule</see>. 
+        </li>
+      </ul>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          ANY ELEMENT (optional): extra elements can be defined which are then passed to the <see cref="ValidationFramework.Configuration.IRuleConfigReader">IRuleConfigReader</see> for generate the <see cref="ValidationFramework.IRule">IRule</see>. 
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+
+  <div class="sectionTitle">Included <see cref="ValidationFramework.Configuration.IRuleConfigReader">IRuleConfigReader</see>s</div>  
+  <ul>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.ComparePropertyRuleConfigReader">ComparePropertyRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.ComparePropertyRule">ComparePropertyRule</see><br /> 
+  <b>Note:</b> this <see cref="ValidationFramework.Configuration.IRuleConfigReader">IRuleConfigReader</see> can only be applied to properties. If it is applied to a member an <b>System.InvalidOperationException</b> will be thrown.<br /> 
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="ComparePropertyRule" 
+      propertyToCompare="MyProperty" 
+      compareOperator="Equal"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">propertyToCompare</span> (required): Used to populate <see cref="ValidationFramework.ComparePropertyRule.PropertyToCompare">ComparePropertyRule.PropertyToCompare</see>.  
+        </li>
+        <li>
+          <span class="code">compareOperator</span> (required): Used to populate <see cref="ValidationFramework.ComparePropertyRule.CompareOperator">ComparePropertyRule.CompareOperator</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+  <b><see cref="ValidationFramework.Configuration.CompareRuleConfigReader">CompareStringRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.CompareRule`1">CompareRule&lt;T&gt;</see><br /> 
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="CompareRule" 
+      valueToCompare="a" 
+      compareOperator="Equal"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">valueToCompare</span> (required): Used to populate <see cref="ValidationFramework.CompareRule`1.ValueToCompare">CompareRule&lt;T&gt;.ValueToCompare</see>.  
+        </li>
+        <li>
+          <span class="code">compareOperator</span> (required): Used to populate <see cref="ValidationFramework.CompareRule`1.CompareOperator">CompareRule&lt;T&gt;.CompareOperator</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+   <b> <see cref="ValidationFramework.Configuration.CompareRuleConfigReader">CompareRuleConfigReader</see></b><br /> 
+    Used to create a <see cref="ValidationFramework.CompareRule`1">CompareRule&lt;T&gt;</see><br />
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="CompareRule" 
+      valueToCompare="1" 
+      compareOperator="Equal"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">valueToCompare</span> (required): Used to populate <see cref="ValidationFramework.CompareRule`1.ValueToCompare">CompareRule&lt;T&gt;.ValueToCompare</see>.  
+        </li>
+        <li>
+          <span class="code">compareOperator</span> (required): Used to populate <see cref="ValidationFramework.CompareRule`1.CompareOperator">CompareRule&lt;T&gt;.CompareOperator</see>.   
+        </li>
+      </ul>
+      <br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.CustomRuleConfigReader">CustomRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.CustomRule">CustomRule</see><br />
+      <b>Sample</b>
+      <pre lang="xml"><validator 
+      ruleInterpretation="This is a custom rule" 
+      validationMethod="ValMethod" 
+      validationTypeName="MyNamespace.MyType,MyAssembly" 
+      errorMessage="hello" 
+      typeName="CustomRule"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">ruleInterpretation</span> (required): Used to populate <see cref="ValidationFramework.CustomRule.RuleInterpretation">CustomRule.RuleInterpretation</see>.  
+        </li>
+        <li>
+          <span class="code">validationMethod</span> (required): Used to populate <see cref="ValidationFramework.CustomRule.Handler">CustomRule.Handler</see>.   
+        </li>
+        <li>
+          <span class="code">validationTypeName</span> (required): Used to populate <see cref="ValidationFramework.CustomRule.Handler">CustomRule.Handler</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.DateTimeConversionRuleConfigReader">DateTimeConversionRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.DateTimeConversionRule">DateTimeConversionRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="DateTimeConversionRule" 
+      dateTimeFormatInfoTypeName="System.Globalization.DateTimeFormatInfo"
+      dateTimeFormatInfoPropertyName="CurrentInfo"
+      dateTimeStyles="AllowDecimalPoint"
+      />
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">dateTimeFormatInfoTypeName</span> (optional): The name of the type to get the DateTimeFormatInfo from. Used to populate <see cref="ValidationFramework.DateTimeConversionRule.DateTimeFormatInfo">DateTimeConversionRule.DateTimeFormatInfo</see>.   
+        </li>
+        <li>
+          <span class="code">dateTimeFormatInfoPropertyName</span> (optional): The name of property to get the DateTimeFormatInfo from. Used to populate <see cref="ValidationFramework.DateTimeConversionRule.DateTimeFormatInfo">DateTimeConversionRule.DateTimeFormatInfo</see>. 
+        </li>
+        <li>
+          <span class="code">dateTimeStyles</span> (optional): Used to populate <see cref="ValidationFramework.DateTimeConversionRule.DateTimeStyles">DateTimeConversionRule.DateTimeStyles</see>. Defaults to DateTimeStyles.None.
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.EnumerableDuplicateRuleConfigReader">EnumerableDuplicateRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.EnumerableDuplicateRule">EnumerableDuplicateRule</see><br />
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="EnumerableDuplicateRule"
+      equalityComparerTypeName="System.StringComparer"
+      equalityComparerPropertyName="InvariantCulture"/>
+      </pre>
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">equalityComparerTypeName</span> (optional): The type name for the type to get <see cref="IEqualityComparer"/> from. Used to populate <see cref="ValidationFramework.EnumerableDuplicateRule.Comparer">EnumerableDuplicateRule.Comparer</see>.  
+        </li>
+        <li>
+          <span class="code">equalityComparerPropertyName</span> (optional): The name of the static property to get <see cref="IEqualityComparer"/> from. Used to populate <see cref="ValidationFramework.EnumerableDuplicateRule.Comparer">EnumerableDuplicateRule.Comparer</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.EnumConversionRuleConfigReader">EnumConversionRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.EnumConversionRule">EnumConversionRule</see><br />
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="EnumConversionRule"
+      enumTypeName="MyNamespace.MyEnum,MyAssembly"
+      ignoreCase="true"/>
+      </pre>
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">enumTypeName</span> (required): The enum <see cref="Type"/> that will attempted to be converted to.  
+        </li>
+        <li>
+          <span class="code">ignoreCase</span> (optional): Whether to ignore case.    
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+  <b><see cref="ValidationFramework.Configuration.LengthCollectionRuleConfigReader">LengthCollectionRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.LengthCollectionRule">LengthCollectionRule</see><br />
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      excludeDuplicatesFromCount="true" 
+      typeName="LengthCollectionRule" 
+      minimum="1" 
+      maximum="5"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">excludeDuplicatesFromCount</span> (optional): Used to populate <see cref="ValidationFramework.LengthCollectionRule.ExcludeDuplicatesFromCount">LengthCollectionRule.ExcludeDuplicatesFromCount</see>.  
+        </li>
+        <li>
+          <span class="code">minimum</span> (optional): Used to populate <see cref="ValidationFramework.LengthRule.Maximum">LengthRule.Maximum</see>.   
+        </li>
+        <li>
+          <span class="code">maximum</span> (required): Used to populate <see cref="ValidationFramework.LengthRule.Minimum">LengthRule.Minimum</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+  <b><see cref="ValidationFramework.Configuration.LengthStringRuleConfigReader">LengthStringRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.LengthStringRule">LengthStringRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="LengthStringRule" 
+      minimum="1" 
+      maximum="5"
+      trimWhiteSpace="false"
+      />
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">minimum</span> (optional): Used to populate <see cref="ValidationFramework.LengthRule.Maximum">LengthRule.Maximum</see>.   
+        </li>
+        <li>
+          <span class="code">maximum</span> (required): Used to populate <see cref="ValidationFramework.LengthRule.Minimum">LengthRule.Minimum</see>.   
+        </li>
+        <li>
+          <span class="code">trimWhiteSpace</span> (required): Used to populate <see cref="ValidationFramework.LengthStringRule.TrimWhiteSpace">LengthStringRule.TrimWhiteSpace</see>. Defaults to true.
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li><b>
+  <b><see cref="ValidationFramework.Configuration.NumberConversionRuleConfigReader">NumberConversionRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.NumberConversionRule">NumberConversionRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="NumberConversionRule" 
+      typeCode="Decimal"
+      numberFormatInfoTypeName="System.Globalization.NumberFormatInfo"
+      numberFormatInfoPropertyName="CurrentInfo"
+      numberStyles="AllowDecimalPoint"
+      />
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">typeCode</span> (required): Used to populate <see cref="ValidationFramework.NumberConversionRule.TypeCode">LengthRule.Maximum</see>.   
+        </li>
+        <li>
+          <span class="code">numberFormatInfoTypeName</span> (optional): The name of the type to get the NumberFormatInfo from. Used to populate <see cref="ValidationFramework.NumberConversionRule.NumberFormatInfo">NumberConversionRule.NumberFormatInfo</see>.   
+        </li>
+        <li>
+          <span class="code">numberFormatInfoPropertyName</span> (optional): The name of property to get the NumberFormatInfo from. Used to populate <see cref="ValidationFramework.NumberConversionRule.NumberFormatInfo">NumberConversionRule.NumberFormatInfo</see>. 
+        </li>
+        <li>
+          <span class="code">numberStyles</span> (optional): Used to populate <see cref="ValidationFramework.NumberConversionRule.NumberStyles">NumberConversionRule.NumberStyles</see>. Defaults to null.
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RangeStringRuleConfigReader">RangeStringRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RangeRule`1">RangeRule&lt;T&gt;</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="RangeStringRule" 
+      minimum="a" 
+      maximum="c"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">minimum</span> (required): Used to populate <see cref="ValidationFramework.RangeRule`1.Maximum">RangeRule&lt;T&gt;.Maximum</see>.   
+        </li>
+        <li>
+          <span class="code">maximum</span> (required): Used to populate <see cref="ValidationFramework.RangeRule`1.Minimum">RangeRule&lt;T&gt;.Minimum</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RangeRuleConfigReader">RangeRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RangeRule`1">RangeRule&lt;T&gt;</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="RangeRule" 
+      minimum="1" 
+      maximum="5"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">minimum</span> (required): Used to populate <see cref="ValidationFramework.RangeRule`1.Maximum">RangeRule&lt;T&gt;.Maximum</see>.   
+        </li>
+        <li>
+          <span class="code">maximum</span> (required): Used to populate <see cref="ValidationFramework.RangeRule`1.Minimum">RangeRule&lt;T&gt;.Minimum</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RegexRuleConfigReader">RegexRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RegexRule">RegexRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      validationExpression="aaaaa" 
+      errorMessage="hello" 
+      typeName="RegexRule" 
+      regexOptions="RightToLeft"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">validationExpression</span> (required): Used to populate <see cref="ValidationFramework.RegexRule.ValidationExpression">RegexRule.ValidationExpression</see>.   
+        </li>
+        <li>
+          <span class="code">regexOptions</span> (optional): Used to populate <see cref="ValidationFramework.RegexRule.RegexOptions">RegexRule.RegexOptions</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RegexRuleConfigReader">RegexRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RegexRule">RegexRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      validationExpression="aaaaa" 
+      errorMessage="hello" 
+      typeName="RegexRule" 
+      regexOptions="RightToLeft"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">validationExpression</span> (required): Used to populate <see cref="ValidationFramework.RegexRule.ValidationExpression">RegexRule.ValidationExpression</see>.   
+        </li>
+        <li>
+          <span class="code">regexOptions</span> (optional): Used to populate <see cref="ValidationFramework.RegexRule.RegexOptions">RegexRule.RegexOptions</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RequiredBoolRuleConfigReader">RequiredBoolRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RequiredBoolRule">RequiredBoolRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="RequiredBoolRule"/>
+      </pre><br />  
+  </li>
+  
+  <li>
+  <see cref="ValidationFramework.Configuration.RequiredEnumRuleConfigReader">RequiredEnumRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RequiredRule`1">RequiredRule&lt;T&gt;</see> that will validate an enum.<br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      initialValue="One" 
+      typeName="RequiredEnumRule"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">initialValue</span> (optional): Used to populate <see cref="ValidationFramework.RequiredRule`1.InitialValue">RequiredRule&lt;T&gt;.InitialValue</see>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+<b>  <see cref="ValidationFramework.Configuration.RequiredObjectRuleConfigReader">RequiredObjectRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RequiredRule`1">RequiredRule&lt;T&gt;</see> that will be validate an object.<br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="RequiredObjectRule">
+      <person name="aaa"/>
+</rule>
+      </pre>
+      
+      <b>Extra Elements</b>
+      <ul>
+        <li>
+          Any element (optional): Only 1 allowed. Used to populate <see cref="ValidationFramework.RequiredRule`1.InitialValue">RequiredRule&lt;T&gt;.InitialValue</see>. It is converted to an object using a <b>System.Xml.Serialization.XmlSerializer</b>.   
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RequiredStringRuleConfigReader">RequiredStringRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RequiredStringRule">RequiredStringRule</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      typeName="RequiredStringRule" 
+      initialValue="hello2"
+      trimWhiteSpace="false"
+      ignoreCase="false"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">initialValue</span> (optional): Used to populate <see cref="ValidationFramework.RequiredRule`1.InitialValue">RequiredRule&lt;T&gt;.InitialValue</see>.   
+        </li>
+        <li>
+          <span class="code">trimWhiteSpace</span> (optional): Used to populate <see cref="ValidationFramework.RequiredStringRule.TrimWhiteSpace">RequiredStringRule.TrimWhiteSpace</see>. Defaults to true.
+        </li>
+        <li>
+          <span class="code">ignoreCase</span> (optional): Used to populate <see cref="ValidationFramework.RequiredStringRule.IgnoreCase">RequiredStringRule.IgnoreCase</see>. Defaults to true.
+        </li>
+      </ul><br />  
+  </li>
+  
+  <li>
+ <b> <see cref="ValidationFramework.Configuration.RequiredRuleConfigReader">RequiredRuleConfigReader</see></b><br /> 
+  Used to create a <see cref="ValidationFramework.RequiredRule`1">RequiredRule&lt;T&gt;</see><br />  
+      <b>Sample</b>
+      <pre lang="xml"><rule 
+      errorMessage="hello" 
+      initialValue="10" 
+      typeName="RequiredRule"/>
+      </pre>
+      
+      <b>Extra Attributes</b>
+      <ul>
+        <li>
+          <span class="code">initialValue</span> (optional): Used to populate <see cref="ValidationFramework.RequiredRule`1.InitialValue">RequiredRule&lt;T&gt;.InitialValue</see>.   
+        </li>
+      </ul>
+  </li>
+  </ul>
+  
+  
+  <div class="sectionTitle">Adding Xml Mapping Document</div> 
+  <br /> 
+  Adding any xml segment is done through the <see cref="ValidationFramework.Configuration.ConfigurationService">ConfigurationService</see>. For a full list of the input types supported see the documentation of <see cref="ValidationFramework.Configuration.ConfigurationService">ConfigurationService</see>.
+  
+  <br />
+  <br />
+  
+  The recommended way of adding an xml segment is by including it as an embedded resource. Then <see cref="ValidationFramework.Configuration.ConfigurationService.AddAssembly">ConfigurationService.AddAssembly</see> is called on the assembly in question. The <see cref="ValidationFramework.Configuration.ConfigurationService">ConfigurationService</see> will then add the contents each resource that end with ".validation.xml". 
+  
+  <br /><br />It is also recommended that a ".validation.xml" file exists for each type that requires validation. 
+  
+  So the type "Person" would have a matching embedded resource file called "Person.validation.xml".
+
+  <br />
+  <br />
+When you application starts you should call <see cref="ValidationFramework.Configuration.ConfigurationService.AddAssembly">ConfigurationService.AddAssembly</see> and pass the Assembly that "Person" exists in. 
+  <br />
+  <br />
+For example.
+      <pre lang="csharp">      ConfigurationService.AddAssembly(Assembly.GetExecutingAssembly());
+      </pre>
+      This example assumes that the "Person" embedded resources exists is the current executing assembly.
+</body>
+</html>
+<!-- @SortOrder 3 -->

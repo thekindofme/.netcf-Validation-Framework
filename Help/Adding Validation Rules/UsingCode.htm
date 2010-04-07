@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Adding Validation Rules Using Code</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+<span class="topicTitle">Adding Validation Rules Using Code</span><br /><br />
+
+Validation definitions can be built up and added completely though code.
+<br/><br/>
+<see cref="ValidationFramework.Reflection.TypeCache">TypeCache</see> is used for adding property and field validations. <see cref="ValidationFramework.Reflection.MethodCache">MethodCache</see> is used for adding validation to the parameters of methods. All types required to perform these actions exists in the <see cref="ValidationFramework.Reflection"/> namespace.
+<br/><br/>
+<code lang="cs" source="Examples\ExampleLibraryCSharp\Reflection\AddWithTypeCacheExample.cs" region="Example"
+    title="Adding Validation Rules To Properties using CSharp." />
+<code lang="cs" source="Examples\ExampleLibraryCSharp\Reflection\MethodCacheExample.cs" region="Example"
+    title="Adding Validation Rules To Methods using CSharp." />
+<code lang="vbnet" source="Examples\ExampleLibraryVB\Reflection\AddWithTypeCacheExample.vb" region="Example"
+    title="Adding Validation Rules To Properties using VB." />
+<code lang="vbnet" source="Examples\ExampleLibraryVB\Reflection\MethodCacheExample.vb" region="Example"
+    title="Adding Validation Rules To Methods using VB." />
+</body>
+</html>
+<!-- @SortOrder 2 -->

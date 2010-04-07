@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="urn:validationFramework-validationDefinition-1.5" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:validationFramework-validationDefinition-1.5" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="validationMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="class" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element maxOccurs="unbounded" type="propertyType" name="property" />
+                <xs:element maxOccurs="unbounded" type="methodType" name="method" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="typeName" use="required" />
+          </xs:complexType>
+        </xs:element> 
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ruleType">
+    <xs:attribute name="errorMessage" />
+    <xs:attribute name="errorMessageType" type="errorMessageType"/>
+    <xs:attribute name="typeName" use="required" />
+    <xs:anyAttribute processContents="skip" />
+  </xs:complexType>
+  <xs:complexType name="propertyType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" type="ruleType" name="rule" />
+    </xs:sequence>
+    <xs:attribute name="name" use="required" />
+  </xs:complexType>
+  <xs:complexType name="parameterType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" type="ruleType" name="rule" />
+    </xs:sequence>
+    <xs:attribute name="name" use="required" />
+  </xs:complexType>
+  <xs:complexType name="methodType">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element maxOccurs="unbounded" type="parameterType" name="parameter" />
+        <xs:element minOccurs="0" maxOccurs="unbounded" type="overloadTypeType" name="overloadType" />
+    </xs:choice>
+    <xs:attribute name="name" use="required" />
+  </xs:complexType>
+  <xs:complexType name="overloadTypeType">
+    <xs:attribute name="typeName" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="errorMessageType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UseCustom"/>
+      <xs:enumeration value="UseRuleDefault"/>
+      <xs:enumeration value="UseProvider"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

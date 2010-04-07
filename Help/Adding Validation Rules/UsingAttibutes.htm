@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Adding Validation Rules Using Attributes</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+  <span class="topicTitle">Adding Validation Rules Using Attributes</span><br /><br />
+  Validation definitions can be added to types and parameters at compile time through
+  the addition of attributes.
+  <br/><br/>
+  <div class="sectionTitle">
+    Included Attributes</div>
+  <ul>
+   <li>
+    <b>Attributes that define comparison rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.ComparePropertyRuleAttribute">ComparePropertyRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="ComparePropertyRule">ComparePropertyRule</see>, that will compare against another property, should be applied to the property. </li>
+        <li>
+          <see cref="ValidationFramework.CompareByteRuleAttribute">CompareByteRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="byte" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareDateTimeRuleAttribute">CompareDateTimeRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <b>System.DateTime</b>, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareDecimalRuleAttribute">CompareDecimalRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will check the range of a <see cref="decimal" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareDoubleRuleAttribute">CompareDoubleRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="double" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareFloatRuleAttribute">CompareFloatRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="float" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareIntRuleAttribute">CompareIntRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="int" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareLongRuleAttribute">CompareLongRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="long" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareShortRuleAttribute">CompareShortRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <see cref="short" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.CompareStringRuleAttribute">CompareStringRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CompareRule`1">CompareRule&lt;T&gt;</see>, that will compare a <b>string</b>, should be applied to the member. </li>
+      </ul>
+    </li>
+   <li>
+    <b>Attributes that define Conversion rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.DateTimeConversionRuleAttribute">DateTimeConversionRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="DateTimeConversionRule">DateTimeConversionRule</see> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.EnumConversionRuleAttribute">EnumConversionRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="EnumConversionRule">EnumConversionRule</see> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.NumberConversionRuleAttribute">NumberConversionRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="NumberConversionRule">NumberConversionRule</see> should be applied to the member. </li>
+      </ul>
+    </li>
+    <li>
+    <b>Attributes that define length rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.LengthCollectionRuleAttribute">LengthCollectionRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="LengthCollectionRule" /> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.LengthStringRuleAttribute">LengthStringRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="LengthStringRule" /> should be applied to the member. </li>
+      </ul>
+    </li>
+    <li>
+    <b>Attributes that define range rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.RangeByteRuleAttribute">RangeByteRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="byte" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeDateTimeRuleAttribute">RangeDateTimeRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <b>System.DateTime</b>, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeDecimalRuleAttribute">RangeDecimalRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range a <see cref="decimal" />, should be applied to the program element. </li>
+        <li>
+          <see cref="ValidationFramework.RangeDoubleRuleAttribute">RangeDoubleRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="double" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeFloatRuleAttribute">RangeFloatRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="float" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeIntRuleAttribute">RangeIntRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="int" />, should be applied to the program element. </li>
+        <li>
+          <see cref="ValidationFramework.RangeLongRuleAttribute">RangeLongRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="long" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeShortRuleAttribute">RangeShortRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeRule`1">RangeRule&lt;T&gt;</see>, that will check the range of a <see cref="short" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RangeStringRuleAttribute">RangeStringRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RangeStringRule" /> should be applied to the member. </li>
+      </ul>
+    </li>
+    <li>
+    <b>Attributes that define required rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.RequiredBoolRuleAttribute">RequiredBoolRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredBoolRule" /> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredByteRuleAttribute">RequiredByteRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="byte" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredDateTimeRuleAttribute">RequiredDateTimeRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <b>System.DateTime</b>, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredDecimalRuleAttribute">RequiredDecimalRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="decimal" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredDoubleRuleAttribute">RequiredDoubleRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="double" /> , should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredEnumRuleAttribute">RequiredEnumRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <b>System.Enum</b>, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredFloatRuleAttribute">RequiredFloatRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="float" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredGuidRuleAttribute">RequiredGuidRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <b>System.Guid</b>, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredIntRuleAttribute">RequiredIntRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="int" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredLongRuleAttribute">RequiredLongRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="long" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredObjectRuleAttribute">RequiredObjectRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredShortRuleAttribute">RequiredShortRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredRule`1">RequiredRule&lt;T&gt;</see>, that will check the existance of a <see cref="short" />, should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RequiredStringRuleAttribute">RequiredStringRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RequiredStringRule" /> should be applied to the member. </li>
+      </ul>
+    </li>
+    <li>
+    <b>Attributes that define other rules.</b>
+      <ul>
+        <li>
+          <see cref="ValidationFramework.CustomRuleAttribute">CustomRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="CustomRule" /> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.EnumerableDuplicateRuleAttribute">EnumerableDuplicateRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="EnumerableDuplicateRule" /> should be applied to the member. </li>
+        <li>
+          <see cref="ValidationFramework.RegexRuleAttribute">RegexRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="RegexRule" /> should be applied to the member. 
+        </li>
+        <li>
+          <see cref="ValidationFramework.ValidatableRuleAttribute">ValidatableRuleAttribute</see>
+          <br />
+          Specifies that a <see cref="ValidatableRule" /> should be applied to the member. 
+        </li>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>
+<!-- @SortOrder 1 -->

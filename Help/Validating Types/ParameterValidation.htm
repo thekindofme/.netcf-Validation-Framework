@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Parameter Validation</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+  <span class="topicTitle">Parameter Validation </span>
+  
+  <br />
+  Parameter Validation is achieved through the use of <see cref="ValidationFramework.ParameterValidationManager">ParameterValidationManager</see>.
+  
+  To wire up parameter validation you need to do the following
+    <ul>
+        <li>
+       <b>Create a pointer to the method.</b><br />
+        This is done by creating a static instance of a <b>System.RuntimeMethodHandle</b>.<br />
+        This pointer is required to avoid the performance hit associated with determining a method from its name (as a string).
+        </li>
+        <li>
+       <b>Add <see cref="ValidationFramework.Rule">Rule</see>s to some parameters.</b><br />
+        This can be is done through attributes, runtime code, or xml configuration. 
+        For the purposes of this example we will stick to attributes.
+        </li>
+        <li>
+       <b>Call 
+        <see cref="ValidationFramework.ParameterValidationManager.ThrowException">ParameterValidationManager.ThrowException</see> 
+  in the first line of your method.</b><br />
+        This will check that the <see cref="ValidationFramework.Rule">Rule</see>s are valid and throw an <b>System.ArgumentException</b>
+        for the first invalid argument.
+        </li>
+    </ul>
+ 
+    The result will look something like this
+    <code lang="cs" source="Examples\ExampleLibraryCSharp\ParameterValidationManagerExamples\BasicHandleExample.cs" region="Example" title="Example using CSharp." />
+    <code lang="vbnet" source="Examples\ExampleLibraryVB\ParameterValidationManagerExamples\BasicHandleExample.vb" region="Example" title="Exampel using VB." />
+    <br />
+    For full details of <see cref="ValidationFramework.ParameterValidationManager">ParameterValidationManager</see> features 
+    have a look at its various methods.
+</body>
+</html>
+<!-- @SortOrder 4 -->

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="ValidationFramework.CustomRule">
+    <Position X="8.5" Y="8" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\CustomRule.cs</FileName>
+      <HashCode>AAAACAgAIACIAAgAAAAAAAAAAAAACAAAAAAAEAAAQAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RegexRule">
+    <Position X="6.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RegexRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAgAAAAAAAAAAAAACAAAABIACAACQAg=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.EnumerableDuplicateRule">
+    <Position X="10.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\EnumerableDuplicateRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAgAAAAAAAAAAAAACAAAAAADAAAAQQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredBoolRule" BaseTypeListCollapsed="true">
+    <Position X="14" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RequiredValidators\RequiredBoolRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredRule&lt;T&gt;">
+    <Position X="13.25" Y="8" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RequiredValidators\RequiredRule.cs</FileName>
+      <HashCode>AABgAAAAAACIAAgACAABAAAAAAAACAAAABABAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.RequiredStringRule" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="12.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RequiredValidators\RequiredStringRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAEAAAgAAAAAAAACEAAABBAAAAAQAQ=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ValidationFramework.RangeRule&lt;T&gt;">
+    <Position X="4" Y="8" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RangeValidators\RangeRule.cs</FileName>
+      <HashCode>gIAACoCAAACEgAwAAIAAAEAAAAAACAACABAAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.RangeStringRule">
+    <Position X="4" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\RangeValidators\RangeStringRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.LengthCollectionRule">
+    <Position X="16.25" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>Validators\LengthValidators\LengthCollectionRule.cs</FileName>
+      <HashCode>AARAABQAAACAAAgAACAAAAAAAQAACAAAAAABAAAAQUA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.LengthStringRule">
+    <Position X="19.25" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>Validators\LengthValidators\LengthStringRule.cs</FileName>
+      <HashCode>AAAAAAAAAACAAAgAAAAAAAAAAAAACEAAABBAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.LengthRule">
+    <Position X="18" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Validators\LengthValidators\LengthRule.cs</FileName>
+      <HashCode>gAAAAICAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.Rule">
+    <Position X="10.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Rule.cs</FileName>
+      <HashCode>AQBAEAEAAASAAAgAAAAIAAAAEBAACBAAAAgAAAAMQBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>

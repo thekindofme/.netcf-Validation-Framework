@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Field Validation</title>
+        <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+        <link rel="stylesheet" type="text/css" href="../presentation.css" />
+        <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+    </head>
+    <body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid;
+    border-bottom: white thick solid">
+        <span class="topicTitle">Field Validation </span><br />
+        <br />
+        <ul>
+            <li>
+                <div class="sectionTitle">Internal Validation</div>
+                <br />
+                <br />
+                Internal validation is when a class handles it own validity internally. This can be achieved by having your own <see cref="ValidationFramework.FieldValidationManager">FieldValidationManager</see> inside your class. 
+                <br />
+                Since there is no way to get notified when a field changes all validation must be done forced.
+                This means that when a consumer of a class wants it validated that consumed must force the validation.
+                As a consequence either the instance of <see cref="ValidationFramework.FieldValidationManager">FieldValidationManager</see> or a subset of its members must be exposed.
+                <br /><br />
+            </li>
+            <li>
+                <div class="sectionTitle">External Validation </div>
+                <br />
+                <br />
+                External validation is when a class is not aware of it own validity and is validated by a external (to the class) by a <see cref="ValidationFramework.FieldValidationManager">FieldValidationManager</see>.
+                When using this option it is completely up to the developer when and how validation occurs.
+                <br />
+            </li>
+        </ul>
+        <code lang="cs" source="Examples\ExampleLibraryCSharp\FieldValidationManagerExamples\CustomClassExample.cs" region="Example" title="Internal example using CSharp." />
+        <code lang="vbnet" source="Examples\ExampleLibraryVB\FieldValidationManagerExamples\CustomClassExample.vb" region="Example" title="Internal example using VB." />
+        <code lang="cs" source="Examples\ExampleLibraryCSharp\FieldValidationManagerExamples\ExternalExample.cs" region="Example" title="External example using CSharp." />
+        <code lang="vbnet" source="Examples\ExampleLibraryVB\FieldValidationManagerExamples\ExternalExample.vb" region="Example" title="External example using VB." />
+    </body>
+</html>
+<!-- @SortOrder 5 -->

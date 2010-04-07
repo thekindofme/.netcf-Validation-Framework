@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ValidationFramework.DateTimeConversionRuleAttribute">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAgAAAAAAAAAAAACAAEAAgAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\StringConversionValidators\DateTimeConversionRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.EnumConversionRuleAttribute">
+    <Position X="8.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAQ=</HashCode>
+      <FileName>Validators\StringConversionValidators\EnumConversionRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.NumberConversionRuleAttribute">
+    <Position X="4.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAARAAAQAAAAAAAAAAAAAAAAAQAAABAA=</HashCode>
+      <FileName>Validators\StringConversionValidators\NumberConversionRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RuleAttribute">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAQAAAAAA=</HashCode>
+      <FileName>RuleAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ValidationFramework.IRuleAttribute">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>IRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

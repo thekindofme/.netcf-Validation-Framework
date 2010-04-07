@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Property Validation</title>
+        <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+        <link rel="stylesheet" type="text/css" href="../presentation.css" />
+        <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+    </head>
+    <body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid;
+    border-bottom: white thick solid">
+        <span class="topicTitle">Property Validation </span><br />
+        <br />
+        <ul>
+            <li>
+                <div class="sectionTitle">Internal Validation</div>
+                <br />
+                <br />
+                Internal validation is when a class handles it own validity internally. This can be achieved by inheriting from the one of the base validation classes (<see cref="ValidationFramework.ValidatableBase">ValidatableBase</see>, <see cref="ValidationFramework.DataErrorInfoValidatableBase">DataErrorInfoValidatableBase</see>, <see cref="ValidationFramework.NotifyValidatableBase">NotifyValidatableBase</see>) or by having your own <see cref="ValidationFramework.PropertyValidationManager">PropertyValidationManager</see> inside your class. 
+                <br />
+                There are two types of internal validation.
+                <br />
+                <ul>
+                    <li>
+                        <b>Validate On Property Set</b>
+                        <br />
+                        Validation occur whenever a property is set. <see cref="ValidationFramework.DataErrorInfoValidatableBase">DataErrorInfoValidatableBase</see> and <see cref="ValidationFramework.NotifyValidatableBase">NotifyValidatableBase</see> both provide helper methods for this functionality. Alternatively an internal instance of <see cref="ValidationFramework.PropertyValidationManager">PropertyValidationManager</see> can be used. 
+                        <br />
+                        Note: It is recommended that properties are only validated when <i>changed</i>, and hence, not on every <i>set</i>. A simple <i>if</i> inside the set of a property can be used to achieve this.
+                    </li>
+                    <li>
+                        <b>Validate On Request Status</b>
+                        <br />
+                        Validation occurs when a consumer of the class request the validity state. Either <see cref="ValidationFramework.ValidatableBase">ValidatableBase</see> or in internal instance of <see cref="ValidationFramework.PropertyValidationManager">PropertyValidationManager</see> can be used in this scenario.
+                    </li>
+                </ul>
+                <br />
+                Which one of these you choose depends on your requirements, both functional and performance. 'Validate On Property Set' puts a performance hit whenever properties change. 'Validate On Request Status' puts a performance hit when the validity state is requested. 'Validate On Property Set' allows consumers of the class to react to changes in the validity state while 'Validate On Request Status' does not. 
+                <br />
+                There are a few <b>recommendations</b> when making this choice.
+                <ul>
+                    <li>
+                        If on the client side use 'Validate On Property Set', especially if want to databind to the validity state.
+                    </li>
+                    <li>
+                        If on the server side and properties change frequently use 'Validate On Request Status'.
+                    </li>
+                    <li>
+                        If on the server side and properties change infrequently use 'Validate On Property Set'.
+                    </li>
+                </ul>   <br /><br />
+            </li>
+            <li>
+                <div class="sectionTitle">Internal Guard Validation </div>
+                <br />
+                <br />
+                Internal guard validation is when a class validates the "value" during the set of a property. This would occur before the internal field value is assigned and, normally, an exception would be thrown if the "value" is invalid. <see cref="ValidationFramework.PropertyValidationManager">PropertyValidationManager</see> has a number of static methods that facilite this. 
+                <br />
+                This approach would usually be used when writing an API that is exposed to developers.   <br />
+            <br /><br /></li>
+            <li>
+                <div class="sectionTitle">External Validation </div>
+                <br />
+                <br />
+                External validation is when a class is not aware of it own validity and is validated by a external (to the class) by a <see cref="ValidationFramework.PropertyValidationManager">PropertyValidationManager</see>.
+                When using this option it is completely up to the developer when and how validation occurs.
+                <br />
+            </li>
+        </ul>
+        
+        <span class="topicTitle">Examples </span><br />
+        <br />
+        <ul>
+            <li>
+                <div class="sectionTitle">Internal Validation</div>
+                <br />
+                <code lang="cs" source="Examples\ExampleLibraryCSharp\BusinessBaseClasses\NotifyValidatableBaseStringExample.cs" region="Example" title="Validate On Property Set CSharp." />
+                <code lang="cs" source="Examples\ExampleLibraryCSharp\PropertyValidationManagerExamples\CustomClassExample.cs" region="Example" title="Validate On Request Status using CSharp." />
+                <code lang="vbnet" source="Examples\ExampleLibraryVB\BusinessBaseClasses\NotifyValidatableBaseStringExample.vb" region="Example" title="Validate On Property Set VB." />
+                <code lang="vbnet" source="Examples\ExampleLibraryVB\PropertyValidationManagerExamples\CustomClassExample.vb" region="Example" title="Validate On Request Status using VB." />
+            </li>
+            <li>
+                <div class="sectionTitle">Internal Guard Validation </div>
+                <code lang="cs" source="Examples\ExampleLibraryCSharp\PropertyValidationManagerExamples\GuardExample.cs" region="Example" title="Internal Guard Validation using CSharp." />
+                <code lang="vbnet" source="Examples\ExampleLibraryVB\PropertyValidationManagerExamples\GuardExample.vb" region="Example" title="Internal Guard Validation using VB." />
+            </li>
+            <li>
+                <div class="sectionTitle">External Validation </div>
+                <code lang="cs" source="Examples\ExampleLibraryCSharp\PropertyValidationManagerExamples\ExternalExample.cs" region="Example" title="External Validation using CSharp." />
+                <code lang="vbnet" source="Examples\ExampleLibraryVB\PropertyValidationManagerExamples\ExternalExample.vb" region="Example" title="External Validation using VB." />
+            </li>
+        </ul>
+        
+    </body>
+</html>
+<!-- @SortOrder 5 -->

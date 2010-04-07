@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ValidationFramework.RuleAttribute">
+    <Position X="9" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAQAAAAAA=</HashCode>
+      <FileName>RuleAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.RangeByteRuleAttribute">
+    <Position X="0.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeByteRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeStringRuleAttribute">
+    <Position X="6.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeStringRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeDateTimeRuleAttribute">
+    <Position X="13" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeDateTimeRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeDecimalRuleAttribute">
+    <Position X="2.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeDecimalRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeDoubleRuleAttribute">
+    <Position X="8.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeDoubleRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeFloatRuleAttribute">
+    <Position X="15.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeFloatRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeIntRuleAttribute">
+    <Position X="4.75" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeIntRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeLongRuleAttribute">
+    <Position X="10.75" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeLongRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeShortRuleAttribute">
+    <Position X="17.5" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeShortRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RangeRuleAttribute" Collapsed="true">
+    <Position X="9" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\RangeValidators\Attributes\RangeRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ValidationFramework.IRuleAttribute">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>IRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

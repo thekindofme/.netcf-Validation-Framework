@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ValidationFramework.CompareByteRuleAttribute">
+    <Position X="1.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareByteRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareRuleAttribute">
+    <Position X="11" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareDateTimeRuleAttribute">
+    <Position X="13.5" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareDateTimeRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareDecimalRuleAttribute">
+    <Position X="18.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareDecimalRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareDoubleRuleAttribute">
+    <Position X="3.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareDoubleRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareFloatRuleAttribute">
+    <Position X="8.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareFloatRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareIntRuleAttribute">
+    <Position X="16.25" Y="6.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareIntRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareLongRuleAttribute">
+    <Position X="21" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareLongRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareShortRuleAttribute">
+    <Position X="6" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareShortRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.CompareStringRuleAttribute">
+    <Position X="11" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\CompareValidators\Attributes\CompareStringRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RuleAttribute">
+    <Position X="11.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAQAAAAAA=</HashCode>
+      <FileName>RuleAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ValidationFramework.IRuleAttribute">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>IRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

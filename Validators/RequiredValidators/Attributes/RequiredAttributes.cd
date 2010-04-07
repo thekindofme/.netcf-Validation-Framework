@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ValidationFramework.RuleAttribute">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAgAQAAAAAA=</HashCode>
+      <FileName>RuleAttribute.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.RequiredBoolRuleAttribute">
+    <Position X="12" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredBoolRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredStringRuleAttribute">
+    <Position X="7" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAABAQAAAAAQ=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredStringRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredByteRuleAttribute">
+    <Position X="16.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredByteRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredDateTimeRuleAttribute">
+    <Position X="17.75" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredDateTimeRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredDecimalRuleAttribute">
+    <Position X="8.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredDecimalRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredDoubleRuleAttribute">
+    <Position X="10.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredDoubleRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredEnumRuleAttribute">
+    <Position X="19.5" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredEnumRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredFloatRuleAttribute">
+    <Position X="21" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredFloatRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredGuidRuleAttribute">
+    <Position X="14.75" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredGuidRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredIntRuleAttribute">
+    <Position X="13.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredIntRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredLongRuleAttribute">
+    <Position X="22.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredLongRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredObjectRuleAttribute">
+    <Position X="24.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredObjectRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ValidationFramework.RequiredShortRuleAttribute">
+    <Position X="5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Validators\RequiredValidators\Attributes\RequiredShortRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ValidationFramework.IRuleAttribute">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>IRuleAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

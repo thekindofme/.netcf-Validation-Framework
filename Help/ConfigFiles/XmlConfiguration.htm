@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>XML Configuration</title>
+  <link rel="stylesheet" type="text/css" href="/styles/presentation.css" />
+  <link rel="stylesheet" type="text/css" href="../presentation.css" />
+  <link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" />
+</head>
+<body style="border-right: white thick solid; border-top: white thick solid; border-left: white thick solid; border-bottom: white thick solid" >
+ <span class="topicTitle">XML Configuration</span>
+  <br />
+  <br />
+  
+  <div class="sectionTitle">Elements</div>
+  <br />
+  <br />
+  <ul>
+    <li>
+      <b><span class="code">mappingDocuments</span> Element</b>
+      <br />
+      Contains information about a group of xml mapping files.
+      <pre lang="xml"><mappingDocuments/>
+      </pre>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          <span class="code">mappingDocument</span> (at least 1 required) : one <span class="code">mappingDocument</span> element should exists for each xml mapping document.
+        </li>
+      </ul>
+      <br/>
+    </li>
+    <li>
+      <b><span class="code">mappingDocument</span> Element</b>
+      <br />
+      Contains information about an xml mapping file.
+      <pre lang="xml"><mappingDocument 
+               url="MyMappingFile.xml" 
+        />
+      </pre>
+      <b>Attributes</b>
+      <ul>
+        <li>
+          <span class="code">url</span> (required): The path to the xml file. 
+        </li>
+      </ul>
+    <br/>
+    </li>
+    <li>
+      <b><span class="code">errorMessageProvider</span> Element</b>
+      <br />
+      Contains information about a IErrorMessageProvider.
+      <pre lang="xml"><errorMessageProvider/>
+      </pre>
+      <b>Child Elements</b>
+      <ul>
+        <li>
+          ANY ELEMENT (optional): extra elements can be defined which are then passed to the <see cref="ValidationFramework.Configuration.ConfigurationService">ConfigurationService</see> for generate the <see cref="ValidationFramework.Configuration.IErrorMessageProvider">IErrorMessageProvider</see>. 
+        </li>
+      </ul>
+      <br/>
+    </li>
+  </ul>
+</body>
+</html>
+<!-- @SortOrder 2 -->

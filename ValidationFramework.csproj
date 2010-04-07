@@ -1,0 +1,513 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2307ED30-E6BF-440B-B514-48AA1F7810B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ValidationFramework</RootNamespace>
+    <AssemblyName>ValidationFramework</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ValidationFramework.xml</DocumentationFile>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRules>-Microsoft.Globalization#CA1303;-Microsoft.Globalization#CA1305</CodeAnalysisRules>
+    <DocumentationFile>bin\Release\ValidationFramework.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessBaseClasses\DataErrorInfoValidatableBase.cs" />
+    <Compile Include="BusinessBaseClasses\IValidatable.cs" />
+    <Compile Include="BusinessBaseClasses\NotifyValidatableBase.cs" />
+    <Compile Include="BusinessBaseClasses\ValidatableBase.cs" />
+    <Compile Include="BusinessBaseClasses\ValidatableCollection.cs" />
+    <Compile Include="IRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\MethodInvokerCreator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RuleAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\TypeDescriptor.cs" />
+    <Compile Include="Reflection\TypeCache.cs" />
+    <Compile Include="RuleDescriber.cs" />
+    <Compile Include="Utilities\DateTimeConverter.cs" />
+    <Compile Include="Utilities\Guard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BusinessBaseClasses\BusinessDiagram.cd" />
+    <Compile Include="BusinessBaseClasses\IPropertyValidatable.cs" />
+    <Compile Include="BusinessBaseClasses\NotifyBase.cs" />
+    <Compile Include="BusinessBaseClasses\NotifyValidatableLinqBase.cs" />
+    <Compile Include="CompareOperator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\ComparePropertyRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\CompareRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\EnumConversionRuleConfigReader.cs" />
+    <Compile Include="Configuration\ConfigReaders\DateTimeConversionRuleConfigReader.cs" />
+    <Compile Include="Configuration\ConfigReaders\NumberConversionRuleConfigReader.cs" />
+    <Compile Include="Configuration\ConfigReaders\RangeRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RequiredRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\ValidatableRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigurationService.cs" />
+    <Compile Include="Configuration\DataClasses\ClassData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\FieldData.cs" />
+    <Compile Include="Configuration\DataClasses\MethodData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\ParameterData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\PropertyData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\RuleData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\TypeData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\DataClasses\ValidationMappingData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ErrorMessageProviderElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\IRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\KeyedCultureErrorMessageProvider\CultureMessage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\KeyedCultureErrorMessageProvider\KeyedCultureErrorMessageProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\KeyedCultureErrorMessageProvider\MessageGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\MappingDocumentElement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\MappingDocumentsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ValidationConfigurationSection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\IErrorMessageProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\EnumUserFriendlyStringAttribute.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\CustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="FieldValidationManagerStatic.cs" />
+    <Compile Include="Fluent\IHideObjectMembers.cs" />
+    <Compile Include="Fluent\PropertyInfo.cs" />
+    <Compile Include="Fluent\Validation.cs" />
+    <Compile Include="IStrategy.cs" />
+    <Compile Include="MemberValidationManagerInstance.cs" />
+    <Compile Include="MemberValidationManagerStatic.cs" />
+    <Compile Include="PropertyValidationManagerStatic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\AssemblyCache.cs" />
+    <Compile Include="Reflection\IncludeAssemblyAttribute.cs" />
+    <Compile Include="Reflection\FieldCollection.cs" />
+    <Compile Include="Reflection\FieldDescriptor.cs" />
+    <Compile Include="Reflection\IncludeMemberAttribute.cs" />
+    <Compile Include="Reflection\MethodCache.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\InfoDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\ParameterCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\ParameterDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\PropertyCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\PropertyDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\RuleCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Reflection\TypeConverterEx.cs" />
+    <Compile Include="Reflection\TypePointers.cs" />
+    <Compile Include="ResultFormatter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="Validators\StandardRegularExpressions.cs" />
+    <Compile Include="PropertyRuleInfo.cs" />
+    <Compile Include="StrategyCache.cs" />
+    <Compile Include="ValidationManagerFactory.cs" />
+    <Compile Include="Validators\StringConversionValidators\EnumConversionRule.cs" />
+    <Compile Include="Validators\StringConversionValidators\EnumConversionRuleAttribute.cs" />
+    <Compile Include="Validators\StringConversionValidators\DateTimeConversionRule.cs" />
+    <Compile Include="Validators\StringConversionValidators\DateTimeConversionRuleAttribute.cs" />
+    <Compile Include="Validators\StringConversionValidators\NumberConversionRule.cs" />
+    <Compile Include="Validators\StringConversionValidators\NumberConversionRuleAttribute.cs" />
+    <Compile Include="Utilities\AutoKeyDictionary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rule.cs" />
+    <None Include="Help\Adding Validation Rules\UsingAttibutes.htm" />
+    <None Include="Help\Adding Validation Rules\UsingCode.htm" />
+    <None Include="Help\Adding Validation Rules\UsingConfiguration.htm" />
+    <None Include="Help\LicenseAgreement.htm" />
+    <None Include="Key.snk" />
+    <Compile Include="ParameterValidationManager.cs" />
+    <Compile Include="Reflection\MethodDescriptor.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ValidationResult.cs" />
+    <Compile Include="Validators\CompareValidators\Attributes\CompareByteRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareDateTimeRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareDecimalRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareDoubleRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareFloatRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareIntRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareLongRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\ComparePropertyRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareShortRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareStringRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\Attributes\CompareRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\ComparePropertyRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CompareValidators\CompareRule.cs" />
+    <Compile Include="Validators\CompareValidators\CompareValidationHelper.cs" />
+    <Compile Include="Validators\CustomRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\CustomRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CustomValidationEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\CustomRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\EnumerableDuplicateRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\EnumerableDuplicateRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\EnumerableDuplicateRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\Attributes\LengthCollectionRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\Attributes\LengthStringRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\Attributes\LengthRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\LengthCollectionRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\LengthStringRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\LengthCollectionRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\LengthRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\LengthStringRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\LengthValidators\LengthValidationHelper.cs" />
+    <Compile Include="Validators\RangeValidators\Attributes\RangeByteRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeDateTimeRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeDecimalRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeDoubleRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeFloatRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeIntRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeLongRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeShortRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\Attributes\RangeStringRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RangeStringRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\RangeRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RangeValidators\RangeStringRule.cs" />
+    <Compile Include="Validators\RangeValidators\RangeValidationHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RegexRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RegexRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RegexRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredBoolRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredByteRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredDateTimeRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredDecimalRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredDoubleRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredEnumRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredFloatRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredGuidRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredIntRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredLongRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredObjectRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredShortRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\Attributes\RequiredStringRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RequiredBoolRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RequiredEnumRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RequiredObjectRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigReaders\RequiredStringRuleConfigReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\RequiredBoolRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\RequiredEnumRuleCreator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\RequiredObjectRuleCreator.cs" />
+    <Compile Include="Validators\RequiredValidators\RequiredRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\RequiredValidators\RequiredStringRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\ValidatableRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Validators\ValidatableRuleAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ValueRule.cs" />
+    <None Include="validation-definition.xsx">
+      <DependentUpon>validation-definition.xsd</DependentUpon>
+    </None>
+    <None Include="Validators\CompareValidators\Attributes\CompareAttributes.cd" />
+    <None Include="Validators\RangeValidators\Attributes\RangeAttributes.cd" />
+    <None Include="Validators\RequiredValidators\Attributes\RequiredAttributes.cd" />
+    <None Include="Validators\Rules.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="validation-definition.xsd">
+      <SubType>
+      </SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Help\ExceptionHandling.htm" />
+    <None Include="Help\highlight.css" />
+    <None Include="Help\presentation.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Help\Validating Types\PropertyValidation.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Help\ConfigFiles\KeyedCultureErrorMessageProvider.htm" />
+    <None Include="Help\ConfigFiles\XmlConfiguration.htm" />
+    <None Include="Help\Validating Types\ParameterValidation.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Help\Validating Types\FieldValidation.htm" />
+    <None Include="Validators\LengthValidators\LengthAttributes.cd" />
+    <None Include="Validators\StringConversionValidators\ConversionAttributes.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

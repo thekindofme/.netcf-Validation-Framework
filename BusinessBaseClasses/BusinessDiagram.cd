@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="ValidationFramework.ValidatableCollection&lt;T&gt;">
+    <Position X="7.5" Y="1.25" Width="3" />
+    <TypeIdentifier>
+      <FileName>BusinessBaseClasses\ValidatableCollection.cs</FileName>
+      <HashCode>AAAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.DataErrorInfoValidatableBase">
+    <Position X="2" Y="3.75" Width="3.75" />
+    <TypeIdentifier>
+      <FileName>BusinessBaseClasses\DataErrorInfoValidatableBase.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAQAACAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.NotifyValidatableBase">
+    <Position X="1.75" Y="6.25" Width="4.25" />
+    <TypeIdentifier>
+      <FileName>BusinessBaseClasses\NotifyValidatableBase.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAIAAIAAAAAAAgAAAQIAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ValidationFramework.ValidatableBase">
+    <Position X="1.75" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <FileName>BusinessBaseClasses\ValidatableBase.cs</FileName>
+      <HashCode>AEAAAAAACAAAAAAAAAgAAAAAAAAAAAAIAAAAAABgAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ValidationFramework.IValidatable">
+    <Position X="7" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>BusinessBaseClasses\IValidatable.cs</FileName>
+      <HashCode>AAAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+</ClassDiagram>
