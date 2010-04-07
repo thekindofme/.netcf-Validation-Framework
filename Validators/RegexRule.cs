@@ -25,7 +25,7 @@ namespace ValidationFramework
         /// <exception cref="ArgumentNullException"><paramref name="validationExpression"/> is a null reference.</exception>
         /// <exception cref="ArgumentException"><paramref name="validationExpression"/> is <see cref="string.Empty"/>.</exception>
         public RegexRule(string validationExpression)
-            : base(TypePointers.StringTypeHandle)
+            : base(TypePointers.StringType)
         {
 			Guard.ArgumentNotNullOrEmptyString(validationExpression, "validationExpression");
 

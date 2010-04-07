@@ -27,7 +27,7 @@ namespace ValidationFramework
 
 		/// <param name="typeCode">The <see cref="TypeCode"/> that this <see cref="NumberConversionRule"/> attempts to convert to.</param>
 		public NumberConversionRule(TypeCode typeCode)
-			: base(TypePointers.StringTypeHandle)
+			: base(TypePointers.StringType)
 		{
 			if ((typeCode == TypeCode.String) || (typeCode == TypeCode.DateTime))
 			{

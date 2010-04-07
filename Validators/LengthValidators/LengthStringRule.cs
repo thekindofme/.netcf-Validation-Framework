@@ -24,7 +24,7 @@ namespace ValidationFramework
         /// <exception cref="ArgumentNullException"><paramref name="minimum"/> is less than 0.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="maximum"/> is not greater than or equal to <paramref name="minimum"/>.</exception>
         public LengthStringRule(int minimum, int maximum)
-            : base(TypePointers.StringTypeHandle, minimum, maximum)
+            : base(TypePointers.StringType, minimum, maximum)
         {
             TrimWhiteSpace = true;
         }

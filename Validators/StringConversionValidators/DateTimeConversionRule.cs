@@ -46,7 +46,7 @@ namespace ValidationFramework
 		/// <param name="dateTimeFormatInfo">The <see cref="System.Globalization.DateTimeFormatInfo"/> that this <see cref="DateTimeConversionRule"/> uses to convert with.</param>
 		/// <param name="dateTimeStyles">The <see cref="System.Globalization.DateTimeStyles"/> that this <see cref="DateTimeConversionRule"/> uses to convert with.</param>
 		public DateTimeConversionRule(string format, DateTimeFormatInfo dateTimeFormatInfo, DateTimeStyles dateTimeStyles)
-            : base(TypePointers.StringTypeHandle)
+            : base(TypePointers.StringType)
         {
         	
 			Format = format;
