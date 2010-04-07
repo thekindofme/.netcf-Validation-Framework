@@ -23,7 +23,7 @@ namespace ValidationFramework.Configuration
         #region Methods
 
 		/// <inheritdoc />
-        public override Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        public override Rule CreateInstance(RuleData ruleData, Type runtimeType)
         {
             Guard.ArgumentNotNull(ruleData, "ruleData");
             return new RequiredBoolRule();

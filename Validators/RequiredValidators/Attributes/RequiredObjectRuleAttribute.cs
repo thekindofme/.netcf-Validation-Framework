@@ -56,11 +56,11 @@ namespace ValidationFramework
         {
             if (initialValue == null)
             {
-                return RequiredObjectRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, null, infoDescriptor.RuntimeTypeHandle);
+                return RequiredObjectRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, null, infoDescriptor.RuntimeType);
             }
             else
             {
-                return RequiredObjectRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, XmlReader.Create(new StringReader(initialValue)), infoDescriptor.RuntimeTypeHandle);
+                return RequiredObjectRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, XmlReader.Create(new StringReader(initialValue)), infoDescriptor.RuntimeType);
             }
         }
 

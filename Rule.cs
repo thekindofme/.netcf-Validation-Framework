@@ -42,10 +42,10 @@ namespace ValidationFramework
         #region Constructors
 
 
-        /// <param name="runtimeTypeHandle">The <see cref="RuntimeTypeHandle"/> that this <see cref="Rule"/> can be applied to. Use <see langword="null"/> to indicate it can be applied to any member type.</param>
-        protected Rule(RuntimeTypeHandle? runtimeTypeHandle)
+        /// <param name="Type">The <see cref="Type"/> that this <see cref="Rule"/> can be applied to. Use <see langword="null"/> to indicate it can be applied to any member type.</param>
+        protected Rule(Type runtimeType)
         {
-           RuntimeTypeHandle = runtimeTypeHandle;
+            RuntimeType = runtimeType;
         }
 
         #endregion
@@ -91,9 +91,9 @@ namespace ValidationFramework
 
 
       /// <summary>
-        /// Gets the <see cref="RuntimeTypeHandle"/> that this <see cref="Rule"/> can be applied to. A <see langword="null"/> is returned if it can be applied to any member type.
+        /// Gets the <see cref="RuntimeType"/> that this <see cref="Rule"/> can be applied to. A <see langword="null"/> is returned if it can be applied to any member type.
         /// </summary>
-        public RuntimeTypeHandle? RuntimeTypeHandle
+        public Type RuntimeType
         {
 			get;
 			private set;
@@ -176,27 +176,28 @@ namespace ValidationFramework
         /// </summary>
         internal virtual void CheckType(InfoDescriptor infoDescriptor)
         {
-            var targetMemberRuntimeTypeHandle = infoDescriptor.RuntimeTypeHandle;
+            //var targetMemberRuntimeTypeHandle = infoDescriptor.RuntimeType;
             //Validate that the attribute is applied to the correct type of property
-            if (RuntimeTypeHandle != null)
+            if (RuntimeType != null)
             {
-                var targetMemberRuntimeType = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
+                //var targetMemberRuntimeType = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
+                var targetMemberRuntimeType = infoDescriptor.RuntimeType;
                 //TODO: Hack for ref params. Should be an easier way of doing this???
                 var fullName = targetMemberRuntimeType.FullName;
                 if (fullName.EndsWith("&"))
                 {
                     targetMemberRuntimeType = Type.GetType(fullName.Substring(0, fullName.Length - 1), true);
                 }
-                var requiredMemberType = Type.GetTypeFromHandle(RuntimeTypeHandle.Value);
+                //var requiredMemberType = Type.GetTypeFromHandle(RuntimeType);
 
                 var underlyingType = Nullable.GetUnderlyingType(targetMemberRuntimeType);
-                if ((underlyingType == null) || (underlyingType != requiredMemberType))
+                if ((underlyingType == null) || (underlyingType != RuntimeType))
                 {
-                    if (!requiredMemberType.IsAssignableFrom(targetMemberRuntimeType, true))
+                    if (!RuntimeType.IsAssignableFrom(targetMemberRuntimeType, true))
                     {
                       var friendlyRuleTypeName = GetType().ToUserFriendlyString();
                       var friendlyTargetMemberTypeName = targetMemberRuntimeType.ToUserFriendlyString();
-                      var friendlyRequiredMemberTypeName = requiredMemberType.ToUserFriendlyString();
+                      var friendlyRequiredMemberTypeName = RuntimeType.ToUserFriendlyString();
                       var exceptionMessage = string.Format(invalidTypeFormat, infoDescriptor.Name, friendlyRequiredMemberTypeName, friendlyRuleTypeName, friendlyTargetMemberTypeName);
                         throw new ArgumentException(exceptionMessage, "value");
                     }

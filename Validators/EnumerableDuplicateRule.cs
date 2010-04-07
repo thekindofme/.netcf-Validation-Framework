@@ -18,7 +18,7 @@ namespace ValidationFramework
     {
         #region Fields
 
-        private static readonly RuntimeTypeHandle handle = typeof (IEnumerable).TypeHandle;
+        private static readonly Type type = typeof (IEnumerable);
 
         #endregion
 
@@ -26,7 +26,7 @@ namespace ValidationFramework
         #region Constructor
 
         public EnumerableDuplicateRule()
-            : base(handle)
+            : base(type)
         {
         }
 

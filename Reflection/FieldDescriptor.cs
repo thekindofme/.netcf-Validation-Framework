@@ -25,8 +25,8 @@ namespace ValidationFramework.Reflection
         /// For testing purposes
         /// </summary>
         /// <exclude/>
-        protected FieldDescriptor(RuntimeTypeHandle runtimeTypeHandle, string name)
-            : base(runtimeTypeHandle, name)
+        protected FieldDescriptor(Type runtimeType, string name)
+            : base(runtimeType, name)
         {
         }
 
@@ -38,7 +38,7 @@ namespace ValidationFramework.Reflection
         /// <param name="typeDescriptor">The <see cref="Reflection.TypeDescriptor"/> this <see cref="FieldDescriptor"/> belongs to.</param>
         /// <exception cref="NullReferenceException"><paramref name="fieldInfo"/> is null.</exception>
         internal FieldDescriptor(TypeDescriptor typeDescriptor, FieldInfo fieldInfo)
-            : base(fieldInfo.FieldType.TypeHandle, fieldInfo.Name)
+            : base(fieldInfo.FieldType, fieldInfo.Name)
         {
             if (fieldInfo.FieldType.IsGenericParameter)
             {

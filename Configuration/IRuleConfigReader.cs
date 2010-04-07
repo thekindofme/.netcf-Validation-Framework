@@ -25,9 +25,9 @@ namespace ValidationFramework.Configuration
         /// Create a <see cref="Rule"/> from a <see cref="RuleData"/>.
         /// </summary>
         /// <param name="ruleData">The <see cref="RuleData"/> that represent the xml to create the <see cref="Rule"/> for.</param>
-        /// <param name="runtimeTypeHandle">The <see cref="System.RuntimeTypeHandle"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
+        /// <param name="runtimeType">The <see cref="System.Type"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
         /// <returns>A <see cref="Rule"/> that <paramref name="ruleData"/> represented</returns>
-        Rule ReadConfig(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle);
+        Rule ReadConfig(RuleData ruleData, Type runtimeType);
 	}
 	public abstract class BaseRuleConfigReader : IRuleConfigReader
 	{
@@ -35,17 +35,17 @@ namespace ValidationFramework.Configuration
 		/// Create a <see cref="Rule"/> from a <see cref="RuleData"/>.
 		/// </summary>
 		/// <param name="ruleData">The <see cref="RuleData"/> that represent the xml to create the <see cref="Rule"/> for.</param>
-		/// <param name="runtimeTypeHandle">The <see cref="System.RuntimeTypeHandle"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
+        /// <param name="runtimeType">The <see cref="System.Type"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
 		/// <returns>A <see cref="Rule"/> that <paramref name="ruleData"/> represented</returns>
-		public virtual Rule ReadConfig(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+		public virtual Rule ReadConfig(RuleData ruleData, Type runtimeType)
 		{
-			var rule = CreateInstance(ruleData, runtimeTypeHandle);
+			var rule = CreateInstance(ruleData, runtimeType);
 			CopyProperties(rule, ruleData);
 			return rule;
 		}
 
 		/// <inheritdoc />
-		public abstract Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle);
+		public abstract Rule CreateInstance(RuleData ruleData, Type runtimeType);
 
 		protected virtual void CopyProperties(Rule rule, RuleData ruleData)
 		{

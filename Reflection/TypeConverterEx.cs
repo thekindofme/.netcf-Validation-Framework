@@ -7,7 +7,7 @@ namespace ValidationFramework.Reflection
     {
         public static object ChangeType(string value, Type conversionType)
         {
-            if (conversionType.TypeHandle.Equals(TypePointers.DateTimeTypeHandle))
+            if (conversionType.Equals(TypePointers.DateTimeType))
             {
                 return DateTimeConverter.Parse(value);
             }

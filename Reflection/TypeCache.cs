@@ -21,7 +21,7 @@ namespace ValidationFramework.Reflection
     {
         #region Fields
 
-        private static readonly Dictionary<RuntimeTypeHandle, TypeDescriptor> typeDescriptorDictionary = new Dictionary<RuntimeTypeHandle, TypeDescriptor>();
+        private static readonly Dictionary<Type, TypeDescriptor> typeDescriptorDictionary = new Dictionary<Type, TypeDescriptor>();
         private static readonly object typeDescriptorDictionaryLock = new object();
         #endregion
 
@@ -45,28 +45,28 @@ namespace ValidationFramework.Reflection
         /// <returns>A <see cref="TypeDescriptor"/> corresponding  to <typeparamref name="T"/>.</returns>
         public static TypeDescriptor GetType<T>() where T: class
         {
-            return GetType(typeof(T).TypeHandle);
+            return GetType(typeof(T));
         }
 
         /// <summary>
-        /// Get, and adds to the cache, a <see cref="TypeDescriptor"/> for a <see cref="RuntimeTypeHandle"/>. 
+        /// Get, and adds to the cache, a <see cref="TypeDescriptor"/> for a <see cref="Type"/>. 
         /// </summary>
-        /// <param name="runtimeTypeHandle">The <see cref="RuntimeTypeHandle"/> for which to get the <see cref="TypeDescriptor"/>.</param>
-        /// <returns>A <see cref="TypeDescriptor"/> corresponding  to <paramref name="runtimeTypeHandle"/>.</returns>
-        /// <exception cref="ArgumentException"><paramref name="runtimeTypeHandle"/> represents an interface.</exception>
-        public static TypeDescriptor GetType(RuntimeTypeHandle runtimeTypeHandle)
+        /// <param name="runtimeType">The <see cref="Type"/> for which to get the <see cref="TypeDescriptor"/>.</param>
+        /// <returns>A <see cref="TypeDescriptor"/> corresponding  to <paramref name="runtimeType"/>.</returns>
+        /// <exception cref="ArgumentException"><paramref name="runtimeType"/> represents an interface.</exception>
+        public static TypeDescriptor GetType(Type runtimeType)
         {
-            //no need to check for null as RuntimeTypeHandle is a struct
+            Guard.ArgumentNotNull(runtimeType, "runtimeType");
             TypeDescriptor typeDescriptor;
 
-            if (!typeDescriptorDictionary.TryGetValue(runtimeTypeHandle, out typeDescriptor))
+            if (!typeDescriptorDictionary.TryGetValue(runtimeType, out typeDescriptor))
             {
                 lock (typeDescriptorDictionaryLock)
                 {
-                    if (!typeDescriptorDictionary.TryGetValue(runtimeTypeHandle, out typeDescriptor))
+                    if (!typeDescriptorDictionary.TryGetValue(runtimeType, out typeDescriptor))
                     {
-                        typeDescriptor = new TypeDescriptor(runtimeTypeHandle);
-                        typeDescriptorDictionary.Add(runtimeTypeHandle, typeDescriptor);
+                        typeDescriptor = new TypeDescriptor(runtimeType);
+                        typeDescriptorDictionary.Add(runtimeType, typeDescriptor);
                     }
                 }
             }
@@ -78,26 +78,26 @@ namespace ValidationFramework.Reflection
 		/// <typeparam name="T">The <see cref="Type"/> for which to get the <see cref="TypeDescriptor"/>.</typeparam>
 		public static void RemoveType<T>() where T : class
 		{
-			RemoveType(typeof(T).TypeHandle);
+			RemoveType(typeof(T));
 		}
 
 		/// <summary>
 		/// Removes <see cref="TypeDescriptor"/> for <see cref="Type"/> from cache. 
 		/// </summary>
-		/// <param name="runtimeTypeHandle">The <see cref="RuntimeTypeHandle"/> for which to get the <see cref="TypeDescriptor"/>.</param>
-		/// <exception cref="ArgumentException"><paramref name="runtimeTypeHandle"/> represents an interface.</exception>
-		public static void RemoveType(RuntimeTypeHandle runtimeTypeHandle)
+        /// <param name="runtimeType">The <see cref="Type"/> for which to get the <see cref="TypeDescriptor"/>.</param>
+        /// <exception cref="ArgumentException"><paramref name="runtimeType"/> represents an interface.</exception>
+		public static void RemoveType(Type runtimeType)
 		{
-			//no need to check for null as RuntimeTypeHandle is a struct
+			Guard.ArgumentNotNull(runtimeType, "runtimeType");
 			TypeDescriptor typeDescriptor;
 
-			if (typeDescriptorDictionary.TryGetValue(runtimeTypeHandle, out typeDescriptor))
+            if (typeDescriptorDictionary.TryGetValue(runtimeType, out typeDescriptor))
 			{
 				lock (typeDescriptorDictionaryLock)
 				{
-					if (typeDescriptorDictionary.TryGetValue(runtimeTypeHandle, out typeDescriptor))
+                    if (typeDescriptorDictionary.TryGetValue(runtimeType, out typeDescriptor))
 					{
-						typeDescriptorDictionary.Remove(runtimeTypeHandle);
+                        typeDescriptorDictionary.Remove(runtimeType);
 					}
 				}
 			}
@@ -106,7 +106,7 @@ namespace ValidationFramework.Reflection
         /// A helper method that gets all <see cref="Rule"/>s of a specific type for a property on an object.
         /// </summary>
         /// <remarks>
-        /// If performance is a concern it is better to call <see cref="GetRulesForProperty{TRule}(string,RuntimeTypeHandle)"/>.
+        /// If performance is a concern it is better to call <see cref="GetRulesForProperty{TRule}(string,Type)"/>.
         /// </remarks>
         /// <typeparam name="TRule">The type of <see cref="Rule"/> to retrieve.</typeparam>
         /// <typeparam name="TTarget">The target type to to retrieve attributes from.</typeparam>
@@ -118,7 +118,7 @@ namespace ValidationFramework.Reflection
             where TRule : Rule
             where TTarget : class
         {
-            return GetRulesForProperty<TRule>(propertyName, typeof(TTarget).TypeHandle);
+            return GetRulesForProperty<TRule>(propertyName, typeof(TTarget));
         }
 
 
@@ -127,17 +127,17 @@ namespace ValidationFramework.Reflection
         /// </summary>
         /// <typeparam name="TRule">The type of <see cref="Rule"/> to retrieve.</typeparam>
         /// <param name="propertyName">The name of the property to get the <see cref="Rule"/>s from.</param>
-        /// <param name="runtimeTypeHandle">The <see cref="RuntimeTypeHandle"/> representing the type to get the <see cref="Rule"/>s from.</param>
+        /// <param name="runtimeType">The <see cref="Type"/> representing the type to get the <see cref="Rule"/>s from.</param>
         /// <returns>A <see cref="IList{T}"/> containing all <see cref="Rule"/>s for the specified property.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="propertyName"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="propertyName"/> is a <see cref="string.Empty"/>.</exception>
-        /// <exception cref="ArgumentException"><paramref name="runtimeTypeHandle"/> represents an interface.</exception>
-        public static IList<TRule> GetRulesForProperty<TRule>(string propertyName, RuntimeTypeHandle runtimeTypeHandle) where TRule : Rule
+        /// <exception cref="ArgumentException"><paramref name="runtimeType"/> represents an interface.</exception>
+        public static IList<TRule> GetRulesForProperty<TRule>(string propertyName, Type runtimeType) where TRule : Rule
         {
-            //no need to check for null as RuntimeTypeHandle is a struct
+            Guard.ArgumentNotNull(runtimeType, "runtimeType");
             Guard.ArgumentNotNullOrEmptyString(propertyName, "propertyName");
             IList<TRule> list = new List<TRule>();
-            var typeDescriptor = GetType(runtimeTypeHandle);
+            var typeDescriptor = GetType(runtimeType);
             var ruleCollection = typeDescriptor.Properties[propertyName].Rules;
             for (var index = 0; index < ruleCollection.Count; index++)
             {
@@ -160,7 +160,7 @@ namespace ValidationFramework.Reflection
         public static PropertyDescriptor GetOrCreatePropertyDescriptor<T>(Expression<Func<T, object>> expression) where T : class
         {
             Guard.ArgumentNotNull(expression, "expression");
-			var typeDescriptor = GetType(typeof(T).TypeHandle);
+			var typeDescriptor = GetType(typeof(T));
 			var name = (((MemberExpression)expression.Body).Member).Name;
 			return typeDescriptor.GetOrCreatePropertyDescriptor(name);
 		}
@@ -175,7 +175,7 @@ namespace ValidationFramework.Reflection
             Guard.ArgumentNotNull(expression, "expression");
             var body = (MemberExpression)expression.Body;
             var parentType = body.Expression.Type;
-            var typeDescriptor = GetType(parentType.TypeHandle);
+            var typeDescriptor = GetType(parentType);
             return typeDescriptor.GetOrCreatePropertyDescriptor(expression);
         }
 
@@ -188,7 +188,7 @@ namespace ValidationFramework.Reflection
 		public static FieldDescriptor GetOrCreateFieldDescriptor<T>(Expression<Func<T, object>> expression) where T:class
         {
             Guard.ArgumentNotNull(expression, "expression");
-			var typeDescriptor = GetType(typeof(T).TypeHandle);
+			var typeDescriptor = GetType(typeof(T));
 			var name = (((MemberExpression)expression.Body).Member).Name;
 			return typeDescriptor.GetOrCreateFieldDescriptor(name);
 		}

@@ -62,7 +62,7 @@ namespace ValidationFramework
         /// <remarks>
         /// <para>Should be called before the field (representing this field) is set.</para>
         /// </remarks>
-        /// <param name="targetHandle">A <see cref="RuntimeTypeHandle"/> representing the static <see cref="Type"/> to validate.</param>
+        /// <param name="targetType">A <see cref="Type"/> representing the static <see cref="Type"/> to validate.</param>
         /// <param name="fieldName">Field to validate. Case sensitive.</param>
         /// <param name="fieldValue">The value of the field being validated.</param>
         /// <param name="ruleSet">The rule set to validate. Use null to validate all rules. Is converted to uppercase.</param>
@@ -71,9 +71,9 @@ namespace ValidationFramework
         /// <exception cref="ArgumentException"><paramref name="fieldName"/> is <see cref="string.Empty"/>.</exception>
         /// <exception cref="ArgumentException">No <see cref="FieldDescriptor"/> could be found named <paramref name="fieldName"/>.</exception>
         /// <exception cref="ArgumentException"><paramref name="ruleSet"/> is a <see cref="string.Empty"/>.</exception>
-		public static void ThrowException(RuntimeTypeHandle targetHandle, object fieldValue, string fieldName, string ruleSet, object context)
+		public static void ThrowException(Type targetType, object fieldValue, string fieldName, string ruleSet, object context)
         {
-            var fieldValidationManager = ValidationManagerFactory.GetPropertyValidationManager(targetHandle, ruleSet);
+            var fieldValidationManager = ValidationManagerFactory.GetPropertyValidationManager(targetType, ruleSet);
 			fieldValidationManager.Context= context;
             fieldValidationManager.ThrowException(fieldValue, fieldName, context);
         }

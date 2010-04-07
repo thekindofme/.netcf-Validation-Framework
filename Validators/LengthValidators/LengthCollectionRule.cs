@@ -92,8 +92,9 @@ namespace ValidationFramework
 		/// <inheritdoc />
 		internal override void CheckType(InfoDescriptor infoDescriptor)
         {
-		    var targetMemberRuntimeTypeHandle = infoDescriptor.RuntimeTypeHandle;
-            var typeToCheck = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
+		    //var targetMemberRuntimeTypeHandle = infoDescriptor.RuntimeType;
+            //var typeToCheck = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
+            var typeToCheck = infoDescriptor.RuntimeType;
             var isGenericICollection = genericCollectionType.IsAssignableFrom(typeToCheck, true);
             var isICollection = collectionType.IsAssignableFrom(typeToCheck, true);
             

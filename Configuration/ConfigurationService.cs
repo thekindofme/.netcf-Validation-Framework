@@ -305,8 +305,8 @@ namespace ValidationFramework.Configuration
         {
             if ((classData.Properties != null) && (classData.Properties.Count > 0))
             {
-                var runtimeTypeHandle = classType.TypeHandle;
-                var typeDescriptor = TypeCache.GetType(runtimeTypeHandle);
+                //var runtimeTypeHandle = classType.TypeHandle;
+                var typeDescriptor = TypeCache.GetType(classType);
                 for (var propertyIndex = 0; propertyIndex < classData.Properties.Count; propertyIndex++)
                 {
                     var propertyData = classData.Properties[propertyIndex];
@@ -324,8 +324,8 @@ namespace ValidationFramework.Configuration
         {
             if ((classData.Fields != null) && (classData.Fields.Count > 0))
             {
-                var runtimeTypeHandle = classType.TypeHandle;
-                var typeDescriptor = TypeCache.GetType(runtimeTypeHandle);
+                //var runtimeTypeHandle = classType.TypeHandle;
+                var typeDescriptor = TypeCache.GetType(classType);
                 for (var fieldIndex = 0; fieldIndex < classData.Fields.Count; fieldIndex++)
                 {
 					var fieldData = classData.Fields[fieldIndex];
@@ -345,14 +345,14 @@ namespace ValidationFramework.Configuration
             for (var ruleDateIndex = 0; ruleDateIndex < list.Count; ruleDateIndex++)
             {
                 var ruleData = list[ruleDateIndex];
-                var runtimeTypeHandle = infoDescriptor.RuntimeTypeHandle;
-                var rule = GetRule(ruleData, runtimeTypeHandle);
+                var runtimeType = infoDescriptor.RuntimeType;
+                var rule = GetRule(ruleData, runtimeType);
                 infoDescriptor.Rules.Add(rule);
             }
         }
 
 
-        internal static Rule GetRule(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        internal static Rule GetRule(RuleData ruleData, Type runtimeType)
         {
             Type ruleConfigReaderType;
 
@@ -414,7 +414,7 @@ namespace ValidationFramework.Configuration
                 }
             }
             var ruleConfigReader = (IRuleConfigReader)Activator.CreateInstance(ruleConfigReaderType);
-            return ruleConfigReader.ReadConfig(ruleData, runtimeTypeHandle);
+            return ruleConfigReader.ReadConfig(ruleData, runtimeType);
         }
 
 

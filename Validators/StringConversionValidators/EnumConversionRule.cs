@@ -28,7 +28,7 @@ namespace ValidationFramework
 
 		/// <param name="enumType">The <see cref="Type"/> that will attempted to be converted to.</param>
 		public EnumConversionRule(Type enumType)
-            : base(TypePointers.StringTypeHandle)
+            : base(TypePointers.StringType)
         {
 			Guard.ArgumentNotNull(enumType,"enumType");
         	EnumType = enumType;
@@ -87,7 +87,7 @@ namespace ValidationFramework
             }
             else
             {
-                return TypeExtensions.IsEnumDefined(EnumType, infoDescriptor.RuntimeTypeHandle, targetMemberValue, IgnoreCase);
+                return TypeExtensions.IsEnumDefined(EnumType, infoDescriptor.RuntimeType, targetMemberValue, IgnoreCase);
             }
 
         }
@@ -109,12 +109,12 @@ namespace ValidationFramework
 		/// <inheritdoc />
 		internal override void CheckType(InfoDescriptor infoDescriptor)
 		{
-		    var targetMemberRuntimeTypeHandle = infoDescriptor.RuntimeTypeHandle;
-			if (!TypePointers.IsNumericType(targetMemberRuntimeTypeHandle) &&
-				!targetMemberRuntimeTypeHandle.Equals(TypePointers.StringTypeHandle))
+		    var targetMemberRuntimeType = infoDescriptor.RuntimeType;
+            if (!TypePointers.IsNumericType(targetMemberRuntimeType) &&
+                !targetMemberRuntimeType.Equals(TypePointers.StringType))
 			{
 				var friendlyRuleTypeName = GetType().ToUserFriendlyString();
-				var targetMemberRuntimeType = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
+				//var targetMemberRuntimeType = Type.GetTypeFromHandle(targetMemberRuntimeTypeHandle);
 				var friendlyTargetMemberTypeName = targetMemberRuntimeType.ToUserFriendlyString();
                 var exceptionMessage = string.Format(invalidTypeFormat, infoDescriptor.Name, friendlyRuleTypeName, friendlyTargetMemberTypeName);
 				throw new ArgumentException(exceptionMessage, "value");

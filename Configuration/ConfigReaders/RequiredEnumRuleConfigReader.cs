@@ -29,7 +29,7 @@ namespace ValidationFramework.Configuration
         #region Methods
 
 		/// <inheritdoc />
-        public override Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        public override Rule CreateInstance(RuleData ruleData, Type runtimeType)
         {
             Guard.ArgumentNotNull(ruleData, "ruleData");
 
@@ -45,11 +45,11 @@ namespace ValidationFramework.Configuration
 
 		    if (initialValue == null)
 		    {
-		        return RequiredEnumRuleCreator.ReadConfig(ruleData.ErrorMessage, ruleData.UseErrorMessageProvider, runtimeTypeHandle);
+                return RequiredEnumRuleCreator.ReadConfig(ruleData.ErrorMessage, ruleData.UseErrorMessageProvider, runtimeType);
 		    }
 		    else
 		    {
-		        return RequiredEnumRuleCreator.ReadConfig(initialValue, ruleData.ErrorMessage, ruleData.UseErrorMessageProvider, runtimeTypeHandle);
+                return RequiredEnumRuleCreator.ReadConfig(initialValue, ruleData.ErrorMessage, ruleData.UseErrorMessageProvider, runtimeType);
 		    }
         }
 

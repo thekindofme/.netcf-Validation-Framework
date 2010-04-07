@@ -26,7 +26,7 @@ namespace ValidationFramework
         #region Fields
 
         private const string errorMessageFormat = "The {0} '{1}' must be '{2}' '{3}'.";
-        private static readonly RuntimeTypeHandle runtimeTypeHandle = typeof (T).TypeHandle;
+        private static readonly Type runtimeType = typeof(T);
 
         #endregion
 
@@ -39,7 +39,7 @@ namespace ValidationFramework
         /// <exception cref="ArgumentNullException"><paramref name="valueToCompare"/> is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="compareOperator"/> is out of the accepted range.</exception>
         public CompareRule(T valueToCompare, CompareOperator compareOperator)
-            : base(runtimeTypeHandle)
+            : base(runtimeType)
         {
             Guard.ArgumentNotNull(valueToCompare, "valueToCompare");
             if ((compareOperator < CompareOperator.Equal) || (compareOperator > CompareOperator.NotEqual))

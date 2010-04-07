@@ -30,7 +30,7 @@ namespace ValidationFramework
 
        public static MemberValidationManager GetPropertyValidationManager(object target, string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(target.GetType().TypeHandle);
+           var typeDescriptor = TypeCache.GetType(target.GetType());
            return new MemberValidationManager(GetDictionary(typeDescriptor.Properties, ruleSet)) { Target = target };
        }
 
@@ -41,20 +41,20 @@ namespace ValidationFramework
 
        public static MemberValidationManager GetPropertyValidationManager<T>(string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(typeof(T).TypeHandle);
-           return new MemberValidationManager(GetDictionary(typeDescriptor.Properties, ruleSet)) { TargetHandle = typeof(T).TypeHandle };
+           var typeDescriptor = TypeCache.GetType(typeof(T));
+           return new MemberValidationManager(GetDictionary(typeDescriptor.Properties, ruleSet)) { TargetType = typeof(T) };
        }
 
 
-       public static MemberValidationManager GetPropertyValidationManager(RuntimeTypeHandle runtimeTypeHandle)
+       public static MemberValidationManager GetPropertyValidationManager(Type runtimeType)
        {
-           return GetPropertyValidationManager(runtimeTypeHandle, null);
+           return GetPropertyValidationManager(runtimeType, null);
        }
 
-       public static MemberValidationManager GetPropertyValidationManager(RuntimeTypeHandle runtimeTypeHandle, string ruleSet)
+       public static MemberValidationManager GetPropertyValidationManager(Type runtimeType, string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(runtimeTypeHandle);
-           return new MemberValidationManager(GetDictionary(typeDescriptor.Properties, ruleSet)) { TargetHandle = runtimeTypeHandle };
+           var typeDescriptor = TypeCache.GetType(runtimeType);
+           return new MemberValidationManager(GetDictionary(typeDescriptor.Properties, ruleSet)) { TargetType = runtimeType };
        }
 
        public static MemberValidationManager GetFieldValidationManager<T>()
@@ -64,8 +64,8 @@ namespace ValidationFramework
 
        public static MemberValidationManager GetFieldValidationManager<T>(string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(typeof(T).TypeHandle);
-           return new MemberValidationManager(GetDictionary(typeDescriptor.Fields, ruleSet)) { TargetHandle = typeof(T).TypeHandle };
+           var typeDescriptor = TypeCache.GetType(typeof(T));
+           return new MemberValidationManager(GetDictionary(typeDescriptor.Fields, ruleSet)) { TargetType = typeof(T) };
        }
 
        public static MemberValidationManager GetFieldValidationManager(object target)
@@ -75,19 +75,19 @@ namespace ValidationFramework
 
        public static MemberValidationManager GetFieldValidationManager(object target, string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(target.GetType().TypeHandle);
+           var typeDescriptor = TypeCache.GetType(target.GetType());
            return new MemberValidationManager(GetDictionary(typeDescriptor.Fields, ruleSet)) { Target = target };
        }
 
-       public static MemberValidationManager GetFieldValidationManager(RuntimeTypeHandle runtimeTypeHandle)
+       public static MemberValidationManager GetFieldValidationManager(Type runtimeType)
        {
-           return GetFieldValidationManager(runtimeTypeHandle, null);
+           return GetFieldValidationManager(runtimeType, null);
        }
        
-       public static MemberValidationManager GetFieldValidationManager(RuntimeTypeHandle runtimeTypeHandle, string ruleSet)
+       public static MemberValidationManager GetFieldValidationManager(Type runtimeType, string ruleSet)
        {
-           var typeDescriptor = TypeCache.GetType(runtimeTypeHandle);
-           return new MemberValidationManager(GetDictionary(typeDescriptor.Fields, ruleSet)) { TargetHandle = runtimeTypeHandle };
+           var typeDescriptor = TypeCache.GetType(runtimeType);
+           return new MemberValidationManager(GetDictionary(typeDescriptor.Fields, ruleSet)) { TargetType = runtimeType };
        }
     }
 }

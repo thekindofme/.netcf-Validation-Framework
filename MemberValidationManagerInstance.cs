@@ -68,7 +68,7 @@ namespace ValidationFramework
 			get
 			{
 				//get this from the cache each time. this will allow the removal of types from the cache in the future to save on memory.
-				return TypeCache.GetType(TargetHandle);
+				return TypeCache.GetType(TargetType);
 			}
 		}
 
@@ -98,9 +98,9 @@ namespace ValidationFramework
 
 
 		/// <summary>
-		/// Gets the <see cref="RuntimeTypeHandle"/> for the <see cref="Type"/> being validated.
+		/// Gets the <see cref="Type"/> for the <see cref="Type"/> being validated.
 		/// </summary>
-		public RuntimeTypeHandle TargetHandle
+		public Type TargetType
 		{
 			get;
 			set;

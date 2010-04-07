@@ -10,13 +10,13 @@ namespace ValidationFramework
         #region Methods
 
 
-        public static Rule ReadConfig(string errorMessage,  bool useErrorMessageProvider, RuntimeTypeHandle runtimeTypeHandle)
+        public static Rule ReadConfig(string errorMessage, bool useErrorMessageProvider, Type runtimeType)
         {
-            CheckTypeIsEnum(runtimeTypeHandle);
+            CheckTypeIsEnum(runtimeType);
             bool targetMemberIsNullable;
             Type constructedRequiredRuleType;
 
-            var targetMemberType = GetTargetMemberType(runtimeTypeHandle, out targetMemberIsNullable, out constructedRequiredRuleType);
+            var targetMemberType = GetTargetMemberType(runtimeType, out targetMemberIsNullable, out constructedRequiredRuleType);
 
             if (targetMemberIsNullable)
             {
@@ -37,22 +37,22 @@ namespace ValidationFramework
             }
         }
 
-        private static void CheckTypeIsEnum(RuntimeTypeHandle runtimeTypeHandle)
+        private static void CheckTypeIsEnum(Type runtimeType)
         {
-            if (runtimeTypeHandle.Equals(TypePointers.EnumTypeHandle))
+            if (runtimeType.Equals(TypePointers.EnumType))
             {
-                throw new ArgumentException("Incorrect type to be validated. Should be an enum not an instance of Enum", "runtimeTypeHandle");
+                throw new ArgumentException("Incorrect type to be validated. Should be an enum not an instance of Enum", "runtimeType");
             }
         }
 
 
-        public static Rule ReadConfig(string initialValue, string errorMessage,  bool useErrorMessageProvider, RuntimeTypeHandle runtimeTypeHandle)
+        public static Rule ReadConfig(string initialValue, string errorMessage, bool useErrorMessageProvider, Type runtimeType)
         {
-            CheckTypeIsEnum(runtimeTypeHandle);
+            CheckTypeIsEnum(runtimeType);
             bool targetMemberIsNullable;
             Type constructedRequiredRuleType;
 
-            var targetMemberType = GetTargetMemberType(runtimeTypeHandle, out targetMemberIsNullable, out constructedRequiredRuleType);
+            var targetMemberType = GetTargetMemberType(runtimeType, out targetMemberIsNullable, out constructedRequiredRuleType);
 
             var enumInitialValue = Enum.Parse(targetMemberType, initialValue, true);
 
@@ -62,12 +62,12 @@ namespace ValidationFramework
         	return rule;
         }
 
-        public static Rule ReadConfig(long initialValue, string errorMessage,  bool useErrorMessageProvider, RuntimeTypeHandle runtimeTypeHandle)
+        public static Rule ReadConfig(long initialValue, string errorMessage, bool useErrorMessageProvider, Type runtimeType)
         {
-            CheckTypeIsEnum(runtimeTypeHandle);
+            CheckTypeIsEnum(runtimeType);
             bool targetMemberIsNullable;
             Type constructedRequiredRuleType;
-            var targetMemberType = GetTargetMemberType(runtimeTypeHandle, out targetMemberIsNullable, out constructedRequiredRuleType);
+            var targetMemberType = GetTargetMemberType(runtimeType, out targetMemberIsNullable, out constructedRequiredRuleType);
 
             var enumInitialValue = GenEnumFromValue(initialValue, targetMemberType);
 			var constructorInfo = constructedRequiredRuleType.GetPublicInstanceConstructor();
@@ -76,18 +76,18 @@ namespace ValidationFramework
 			return rule;
         }
 
-        private static Type GetTargetMemberType(RuntimeTypeHandle runtimeTypeHandle, out bool targetMemberIsNullable, out Type constructedRequiredRuleType)
+        private static Type GetTargetMemberType(Type runtimeType, out bool targetMemberIsNullable, out Type constructedRequiredRuleType)
         {
             var genericRequiredRuleType = typeof (RequiredRule<>);
-            var targetMemberType = Type.GetTypeFromHandle(runtimeTypeHandle);
-            var underlyingType = Nullable.GetUnderlyingType(targetMemberType);
+            //var targetMemberType = Type.GetTypeFromHandle(runtimeType);
+            var underlyingType = Nullable.GetUnderlyingType(runtimeType);
             targetMemberIsNullable = underlyingType != null;
             if (targetMemberIsNullable)
             {
-                targetMemberType = underlyingType;
+                runtimeType = underlyingType;
             }
-            constructedRequiredRuleType = genericRequiredRuleType.MakeGenericType(targetMemberType);
-            return targetMemberType;
+            constructedRequiredRuleType = genericRequiredRuleType.MakeGenericType(runtimeType);
+            return runtimeType;
         }
 
         internal static object GenEnumFromValue(long value, Type enumType)

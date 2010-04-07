@@ -45,9 +45,9 @@ namespace ValidationFramework.Extensions
         }
 
 
-        internal static bool IsEnumDefined(Type enumType, RuntimeTypeHandle valueTypeHandle, object value, bool ignoreCase)
+        internal static bool IsEnumDefined(Type enumType, Type valueType, object value, bool ignoreCase)
         {
-            if (valueTypeHandle.Equals(TypePointers.StringTypeHandle))
+            if (valueType.Equals(TypePointers.StringType))
             {
                 var valueAsString = (string)value;
                 if (valueAsString.Length==0)

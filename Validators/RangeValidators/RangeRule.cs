@@ -25,7 +25,7 @@ namespace ValidationFramework
 
         private const string errorMessageFormat = "The {0} '{1}' must be '{2}' {3} and '{4}' {5}.";
         private const string ruleInterpretationFormat = "The value must be '{0}' {1} and '{2}' {3}.";
-        private static readonly RuntimeTypeHandle runtimeTypeHandle = typeof (T).TypeHandle;
+        private static readonly Type runtimeType = typeof (T);
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace ValidationFramework
         /// <param name="minimum">The minimum valid value</param>
         /// <param name="maximum">The maximum valid value</param>
         public RangeRule(T minimum, T maximum)
-            : base(runtimeTypeHandle)
+            : base(runtimeType)
         {
             Minimum = minimum;
             Maximum = maximum;

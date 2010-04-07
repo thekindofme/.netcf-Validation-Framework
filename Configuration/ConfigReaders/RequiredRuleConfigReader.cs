@@ -30,12 +30,12 @@ namespace ValidationFramework.Configuration
         #region Methods
 
 		/// <inheritdoc />
-        public override Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        public override Rule CreateInstance(RuleData ruleData, Type genericType)
         {
             Guard.ArgumentNotNull(ruleData, "ruleData");
             var genericRequiredRuleType = typeof (RequiredRule<>);
-			var genericType = Type.GetTypeFromHandle(runtimeTypeHandle);
-			if (genericType.IsGenericType && (genericType.GetGenericTypeDefinition().TypeHandle.Equals(TypePointers.NullableTypeHandle)))
+            //var genericType = Type.GetTypeFromHandle(runtimeType);
+			if (genericType.IsGenericType && (genericType.GetGenericTypeDefinition().Equals(TypePointers.NullableType)))
 			{
 				genericType = genericType.GetGenericArguments()[0];
 			}

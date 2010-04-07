@@ -75,16 +75,16 @@ namespace ValidationFramework
 		    {
 		        if (InitialValueAsLong == null)
 		        {
-		            return RequiredEnumRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeTypeHandle);
+		            return RequiredEnumRuleCreator.ReadConfig(ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeType);
 		        }
 		        else
 		        {
-		            return RequiredEnumRuleCreator.ReadConfig(InitialValueAsLong.Value, ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeTypeHandle);
+		            return RequiredEnumRuleCreator.ReadConfig(InitialValueAsLong.Value, ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeType);
 		        }
 		    }
 		    else
 		    {
-		        return RequiredEnumRuleCreator.ReadConfig(InitialValueAsString, ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeTypeHandle);
+		        return RequiredEnumRuleCreator.ReadConfig(InitialValueAsString, ErrorMessage, UseErrorMessageProvider, infoDescriptor.RuntimeType);
 		    }
 		}
 

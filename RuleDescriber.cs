@@ -26,7 +26,7 @@ namespace ValidationFramework
                 //we only care about classes.
                 if (type.IsClass)
                 {
-                    var typeDescriptor = TypeCache.GetType(type.TypeHandle);
+                    var typeDescriptor = TypeCache.GetType(type);
                     if (typeDescriptor != null)
                     {
                         foreach (var propertyDescriptor in typeDescriptor.Properties)

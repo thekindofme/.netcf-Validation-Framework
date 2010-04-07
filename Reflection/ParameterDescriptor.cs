@@ -20,8 +20,8 @@ namespace ValidationFramework.Reflection
         /// For testing purposes
         /// </summary>
         /// <exclude/>
-        protected ParameterDescriptor(RuntimeTypeHandle runtimeTypeHandle, string name)
-            : base(runtimeTypeHandle, name)
+        protected ParameterDescriptor(Type runtimeType, string name)
+            : base(runtimeType, name)
         {
         }
 
@@ -32,7 +32,7 @@ namespace ValidationFramework.Reflection
         /// <param name="methodDescriptor">The parent <see cref="MethodDescriptor"/>.</param>
         /// <param name="parameterInfo">The <see cref="ParameterInfo"/> to wrap.</param>
         internal ParameterDescriptor(MethodDescriptor methodDescriptor, ParameterInfo parameterInfo)
-            : base(parameterInfo.ParameterType.TypeHandle, parameterInfo.Name)
+            : base(parameterInfo.ParameterType, parameterInfo.Name)
         {
             if (parameterInfo.IsOutParam())
             {

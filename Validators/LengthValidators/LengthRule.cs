@@ -16,13 +16,13 @@ namespace ValidationFramework
         #region Constructors
 
       
-        /// <param name="propertyTypeHandle">The <see cref="RuntimeTypeHandle"/> that this <see cref="LengthRule"/> can be applied to. Use <see langword="null"/> to indicate it can be applied to any property type.</param>
+        /// <param name="propertyType">The <see cref="Type"/> that this <see cref="LengthRule"/> can be applied to. Use <see langword="null"/> to indicate it can be applied to any property type.</param>
         /// <param name="maximum">The maximum length allowed.</param>
         /// <param name="minimum">The minimum length allowed.</param>
         /// <exception cref="ArgumentNullException"><paramref name="minimum"/> is less than 0.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="maximum"/> is not greater than or equal to <paramref name="minimum"/>.</exception>
-        protected LengthRule(RuntimeTypeHandle? propertyTypeHandle, int minimum, int maximum)
-            : base(propertyTypeHandle)
+        protected LengthRule(Type propertyType, int minimum, int maximum)
+            : base(propertyType)
         {
             if (minimum < 0)
             {

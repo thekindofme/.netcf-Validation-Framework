@@ -26,8 +26,8 @@ namespace ValidationFramework.Reflection
         /// For testing purposes
         /// </summary>
         /// <exclude/>
-        protected PropertyDescriptor(RuntimeTypeHandle runtimeTypeHandle, string name)
-            : base(runtimeTypeHandle, name)
+        protected PropertyDescriptor(Type runtimeType, string name)
+            : base(runtimeType, name)
         {
         }
 
@@ -40,7 +40,7 @@ namespace ValidationFramework.Reflection
         /// <param name="getMethodInfo">The get <see cref="MethodInfo"/> for the <see cref="PropertyInfo"/> being wrapped.</param>
         /// <exception cref="NullReferenceException"><paramref name="propertyInfo"/> is null.</exception>
         internal PropertyDescriptor(TypeDescriptor typeDescriptor, PropertyInfo propertyInfo, MethodInfo getMethodInfo)
-            : base(getMethodInfo.ReturnType.TypeHandle, propertyInfo.Name)
+            : base(getMethodInfo.ReturnType, propertyInfo.Name)
         {
             if (propertyInfo.PropertyType.IsGenericParameter)
             {

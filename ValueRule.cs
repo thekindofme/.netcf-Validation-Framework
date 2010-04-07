@@ -6,7 +6,8 @@ namespace ValidationFramework
     public abstract class ValueRule : Rule
     {
         /// <inheritdoc/>
-        protected ValueRule(RuntimeTypeHandle? runtimeTypeHandle) : base(runtimeTypeHandle)
+        protected ValueRule(Type runtimeType)
+            : base(runtimeType)
         {
         }
 

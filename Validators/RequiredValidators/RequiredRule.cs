@@ -13,7 +13,7 @@ namespace ValidationFramework
     {
         #region Fields
 
-        private static readonly RuntimeTypeHandle runtimeTypeHandle = typeof (T).TypeHandle;
+        private static readonly Type runtimeType = typeof(T);
         private T initialValue;
 
         #endregion
@@ -23,7 +23,7 @@ namespace ValidationFramework
 
 
         public RequiredRule()
-            : base(runtimeTypeHandle)
+            : base(runtimeType)
         {
         }
 

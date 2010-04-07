@@ -42,11 +42,11 @@ namespace ValidationFramework.Configuration
         /// Create a <see cref="Rule"/> from a <see cref="RuleData"/>.
         /// </summary>
         /// <param name="ruleData">The <see cref="RuleData"/> that represent the xml to create the <see cref="Rule"/> for.</param>
-        /// <param name="runtimeTypeHandle">The <see cref="System.RuntimeTypeHandle"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
+        /// <param name="runtimeType">The <see cref="System.Type"/> for the <see cref="Type"/> to create the <see cref="Rule"/> for.</param>
         /// <returns>A <see cref="Rule"/> that <paramref name="ruleData"/> represented</returns>
         /// <exception cref="ArgumentNullException"><paramref name="ruleData"/> is null.</exception>
 		/// <exception cref="InvalidOperationException">Both equalityComparerTypeName and equalityComparerPropertyName have to be null or not null.</exception>
-		public override Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        public override Rule CreateInstance(RuleData ruleData, Type runtimeType)
         {
         	Guard.ArgumentNotNull(ruleData, "ruleData");
 

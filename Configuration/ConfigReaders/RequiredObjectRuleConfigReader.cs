@@ -32,7 +32,7 @@ namespace ValidationFramework.Configuration
         #region Methods
 
 		/// <inheritdoc />
-        public override Rule CreateInstance(RuleData ruleData, RuntimeTypeHandle runtimeTypeHandle)
+        public override Rule CreateInstance(RuleData ruleData, Type runtimeType)
         {
             Guard.ArgumentNotNull(ruleData, "ruleData");
 
@@ -42,7 +42,7 @@ namespace ValidationFramework.Configuration
             {
                 initialValueXmlReader = XmlReader.Create(new StringReader(ruleData.InnerXml),null,(XmlParserContext)null);
             }
-            return RequiredObjectRuleCreator.ReadConfig(errorMessage, ruleData.UseErrorMessageProvider, initialValueXmlReader, runtimeTypeHandle);
+            return RequiredObjectRuleCreator.ReadConfig(errorMessage, ruleData.UseErrorMessageProvider, initialValueXmlReader, runtimeType);
         }
 
         #endregion

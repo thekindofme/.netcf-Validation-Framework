@@ -9,17 +9,17 @@ namespace ValidationFramework
     {
         #region Methods
 
-		public static Rule ReadConfig(string errorMessage, bool useErrorMessageProvider, XmlReader initialValueXmlReader, RuntimeTypeHandle runtimeTypeHandle)
+        public static Rule ReadConfig(string errorMessage, bool useErrorMessageProvider, XmlReader initialValueXmlReader, Type runtimeType)
 		{
 			var genericRequiredRuleType = typeof (RequiredRule<>);
-			var targetMemberType = Type.GetTypeFromHandle(runtimeTypeHandle);
-			var constructedRequiredRuleType = genericRequiredRuleType.MakeGenericType(targetMemberType);
+			//var targetMemberType = Type.GetTypeFromHandle(runtimeTypeHandle);
+            var constructedRequiredRuleType = genericRequiredRuleType.MakeGenericType(runtimeType);
 
 			var rule = (Rule) Activator.CreateInstance(constructedRequiredRuleType);
 			if (initialValueXmlReader != null)
 			{
-				var objectType = Type.GetTypeFromHandle(runtimeTypeHandle);
-				var xmlSerializer = new XmlSerializer(objectType);
+				//var objectType = Type.GetTypeFromHandle(runtimeTypeHandle);
+                var xmlSerializer = new XmlSerializer(runtimeType);
 
 				var initialValue = xmlSerializer.Deserialize(initialValueXmlReader);
 				rule.SetProperty("InitialValue", initialValue);

@@ -21,7 +21,7 @@ namespace ValidationFramework
     {
         #region Fields
 
-        //private static readonly RuntimeTypeHandle runtimeTypeHandle = typeof(IValidatable).TypeHandle;
+        //private static readonly RuntimeType Type = typeof(IValidatable).TypeHandle;
 
         #endregion
 

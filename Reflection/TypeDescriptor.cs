@@ -34,22 +34,22 @@ namespace ValidationFramework.Reflection
 		/// <summary>
 		/// Initialize a new instance of the <see cref="TypeDescriptor"/> class.
 		/// </summary>
-		/// <param name="runtimeTypeHandle">The <see cref="System.RuntimeTypeHandle"/> for the <see cref="Type"/> to wrap.</param>
-		/// <exception cref="ArgumentException"><paramref name="runtimeTypeHandle"/> represents an interface.</exception>
-        internal TypeDescriptor(RuntimeTypeHandle runtimeTypeHandle)
+        /// <param name="runtimeType">The <see cref="System.Type"/> for the <see cref="Type"/> to wrap.</param>
+        /// <exception cref="ArgumentException"><paramref name="runtimeType"/> represents an interface.</exception>
+        internal TypeDescriptor(Type runtimeType)
 		{
-		    var currentType = Type.GetTypeFromHandle(runtimeTypeHandle);
-		    if (currentType.IsInterface)
+		    //var currentType = Type.GetTypeFromHandle(runtimeTypeHandle);
+            if (runtimeType.IsInterface)
 		    {
-		        throw new ArgumentException(string.Format("Cannot create a TypeDescriptor for an interface. Interface = {0}'", currentType.ToUserFriendlyString()), "runtimeTypeHandle");
+                throw new ArgumentException(string.Format("Cannot create a TypeDescriptor for an interface. Interface = {0}'", runtimeType.ToUserFriendlyString()), "runtimeType");
 		    }
-		    RuntimeTypeHandle = runtimeTypeHandle;
+            RuntimeType = runtimeType;
 
 			Properties = new PropertyCollection(this);
 			Fields = new FieldCollection(this);
 
-			ProccessProperties(currentType);
-			ProcessFields(currentType);
+            ProccessProperties(runtimeType);
+            ProcessFields(runtimeType);
 
 			Properties.SetToReadOnly();
 			Fields.SetToReadOnly();
@@ -131,7 +131,7 @@ namespace ValidationFramework.Reflection
             {
                 if (AssemblyCache.CanReflectOverAssembly(currentType.Assembly, baseType.Assembly))
                 {
-					var baseTypeDescriptor = TypeCache.GetType(baseType.TypeHandle);
+					var baseTypeDescriptor = TypeCache.GetType(baseType);
 					foreach (var basePropertyDescriptor in baseTypeDescriptor.Properties)
 					{
 						if (!basePropertyDescriptor.IsStatic)
@@ -270,7 +270,7 @@ namespace ValidationFramework.Reflection
 			{
 				if (AssemblyCache.CanReflectOverAssembly(currentType.Assembly, baseType.Assembly))
 				{
-					var baseTypeDescriptor = TypeCache.GetType(baseType.TypeHandle);
+					var baseTypeDescriptor = TypeCache.GetType(baseType);
 					foreach (var baseFieldDescriptor in baseTypeDescriptor.Fields)
 					{
 						if (!baseFieldDescriptor.IsStatic)
@@ -297,9 +297,9 @@ namespace ValidationFramework.Reflection
 		#region Properties
 
 		/// <summary>
-		/// Gets the <see cref="System.RuntimeTypeHandle"/> for the <see cref="Type"/> this <see cref="TypeDescriptor"/> wraps.
+		/// Gets the <see cref="System.Type"/> for the <see cref="Type"/> this <see cref="TypeDescriptor"/> wraps.
 		/// </summary>
-		public RuntimeTypeHandle RuntimeTypeHandle
+		public Type RuntimeType
 		{
 			get;
 			private set;
@@ -357,19 +357,19 @@ namespace ValidationFramework.Reflection
 			PropertyDescriptor propertyDescriptor;
 			if (!Properties.TryGetValue(name, out propertyDescriptor))
 			{
-				var typeFromHandle = Type.GetTypeFromHandle(RuntimeTypeHandle);
-				var propertyInfo = typeFromHandle.GetProperty(name, PropertyFlags);
+				//var typeFromHandle = Type.GetTypeFromHandle(RuntimeTypeHandle);
+                var propertyInfo = RuntimeType.GetProperty(name, PropertyFlags);
 				if (propertyInfo == null)
 				{
-					var canReflectOverAssembly = AssemblyCache.CanReflectOverAssembly(typeFromHandle.Assembly, typeFromHandle.BaseType.Assembly);
-					if (typeFromHandle.BaseType != null && canReflectOverAssembly)
+                    var canReflectOverAssembly = AssemblyCache.CanReflectOverAssembly(RuntimeType.Assembly, RuntimeType.BaseType.Assembly);
+                    if (RuntimeType.BaseType != null && canReflectOverAssembly)
 					{
-						var baseTypeDescriptor = TypeCache.GetType(typeFromHandle.BaseType.TypeHandle);
+                        var baseTypeDescriptor = TypeCache.GetType(RuntimeType.BaseType);
 						propertyDescriptor = baseTypeDescriptor.GetOrCreatePropertyDescriptor(name);
 					}
 					else
 					{
-						throw new InvalidOperationException(string.Format("Could not find property '{0}' on type '{1}'", name, typeFromHandle.ToUserFriendlyString()));
+                        throw new InvalidOperationException(string.Format("Could not find property '{0}' on type '{1}'", name, RuntimeType.ToUserFriendlyString()));
 					}
 				}
 				else
@@ -454,19 +454,19 @@ namespace ValidationFramework.Reflection
             FieldDescriptor fieldDescriptor;
             if (!Fields.TryGetValue(name, out fieldDescriptor))
             {
-                var typeFromHandle = Type.GetTypeFromHandle(RuntimeTypeHandle);
-                var fieldInfo = typeFromHandle.GetField(name, PropertyFlags);
+                //var typeFromHandle = Type.GetTypeFromHandle(RuntimeType);
+                var fieldInfo = RuntimeType.GetField(name, PropertyFlags);
                 if (fieldInfo == null)
-                {	
-					var canReflectOverAssembly = AssemblyCache.CanReflectOverAssembly(typeFromHandle.Assembly, typeFromHandle.BaseType.Assembly);
-					if (typeFromHandle.BaseType != null && canReflectOverAssembly)
+                {
+                    var canReflectOverAssembly = AssemblyCache.CanReflectOverAssembly(RuntimeType.Assembly, RuntimeType.BaseType.Assembly);
+                    if (RuntimeType.BaseType != null && canReflectOverAssembly)
                     {
-                        var baseTypeDescriptor = TypeCache.GetType(typeFromHandle.BaseType.TypeHandle);
+                        var baseTypeDescriptor = TypeCache.GetType(RuntimeType.BaseType);
                         fieldDescriptor = baseTypeDescriptor.GetOrCreateFieldDescriptor(name);
                     }
                     else
                     {
-                        throw new InvalidOperationException(string.Format("Could not find field '{0}' on type '{1}'", name, typeFromHandle.ToUserFriendlyString()));
+                        throw new InvalidOperationException(string.Format("Could not find field '{0}' on type '{1}'", name, RuntimeType.ToUserFriendlyString()));
                     }
                 }
                 else

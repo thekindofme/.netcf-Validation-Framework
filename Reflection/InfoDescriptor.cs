@@ -27,15 +27,15 @@ namespace ValidationFramework.Reflection
         /// <summary>
         /// Initialize a new instance of <see cref="InfoDescriptor"/>. Exposed for testing purposes.
         /// </summary>
-        /// <param name="runtimeTypeHandle"></param>
+        /// <param name="Type"></param>
         /// <param name="name">The name of the <see cref="InfoDescriptor"/>.</param>
         /// <exception cref="ArgumentNullException"><paramref name="name"/> is null.</exception>
         /// <exception cref="ArgumentException"><paramref name="name"/> is a <see cref="string.Empty"/>.</exception>
         /// <exclude/>
-        protected InfoDescriptor(RuntimeTypeHandle runtimeTypeHandle, string name)
+        protected InfoDescriptor(Type runtimeType, string name)
         {
             Guard.ArgumentNotNullOrEmptyString(name, "name");
-            RuntimeTypeHandle = runtimeTypeHandle;
+            RuntimeType = runtimeType;
             Name = name;
             Rules = new RuleCollection(this);
         }
@@ -55,10 +55,10 @@ namespace ValidationFramework.Reflection
 		}
 
         /// <summary>
-        /// Gets the <see cref="RuntimeTypeHandle"/> for the <see cref="InfoDescriptor"/>.
+        /// Gets the <see cref="RuntimeType"/> for the <see cref="InfoDescriptor"/>.
         /// </summary>
-        /// <remarks>For a <see cref="PropertyDescriptor"/> this will be the <see cref="RuntimeTypeHandle"/> for the return <see cref="Type"/> of the get. For a <see cref="ParameterDescriptor"/> this will be the <see cref="RuntimeTypeHandle"/> for the <see cref="Type"/> of the <see langword="parameter"/>.</remarks>
-        public RuntimeTypeHandle RuntimeTypeHandle
+        /// <remarks>For a <see cref="PropertyDescriptor"/> this will be the <see cref="RuntimeType"/> for the return <see cref="Type"/> of the get. For a <see cref="ParameterDescriptor"/> this will be the <see cref="RuntimeType"/> for the <see cref="Type"/> of the <see langword="parameter"/>.</remarks>
+        public Type RuntimeType
 		{
 			get;
 			private set;
