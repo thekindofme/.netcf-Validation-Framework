@@ -15,6 +15,7 @@ namespace ValidationFramework
 
         private static readonly Type runtimeType = typeof(T);
         private T initialValue;
+        bool hasInitialValue;
 
         #endregion
 
@@ -45,7 +46,8 @@ namespace ValidationFramework
 			set
 			{
 				initialValue = value;
-			}
+                hasInitialValue = true;
+            }
         }
 
 		/// <inheritdoc />
@@ -72,7 +74,7 @@ namespace ValidationFramework
 		/// <inheritdoc />
         public override bool Validate(object targetMemberValue, object context, InfoDescriptor infoDescriptor)
 		{
-			var hasInitialValue = initialValue != null;
+            //var hasInitialValue = initialValue != null;
 			if ((targetMemberValue == null) && (!hasInitialValue))
             {
                 return false;
