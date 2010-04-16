@@ -25,8 +25,8 @@ namespace ValidationFramework
         /// <param name="maximum">The maximum value.</param>
         public RangeDecimalRuleAttribute(double minimum, double maximum)
         {
-            Minimum = (decimal) minimum;
-            Maximum = (decimal) maximum;
+            Minimum = (minimum > (double)decimal.MaxValue) ? decimal.MaxValue : (decimal)minimum;
+            Maximum = (maximum > (double)decimal.MaxValue) ? decimal.MaxValue : (decimal)maximum;
         }
 
         #endregion
